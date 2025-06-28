@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
 import { CartButton} from '@/components/ui/CartButton'
+import { useAuth } from '@/hooks/useAuth'
 
 const Header = () => {
   const links = [
@@ -17,6 +18,8 @@ const Header = () => {
   const location = useLocation()
 
   const isHomePage = location.pathname === '/'
+
+  const { user } = useAuth()
 
   return (
     <header className={classNames('header', isHomePage ? 'header-home' : '')}>
@@ -45,8 +48,8 @@ const Header = () => {
               ))}
             </ul>
           </nav>
-          <NavigationLink title="cart-button" to="/cart" className="header__cart-button__link cart-button__link">
-            <CartButton className="header__cart-button" itemsCount={3} />
+          <NavigationLink title="cart-button" to={user ? '/cart' : '/login'} className="header__cart-button__link cart-button__link">
+            <CartButton className="header__cart-button" />
           </NavigationLink>
         </div>
       </div>
