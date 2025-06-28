@@ -1,0 +1,30 @@
+.navigation-link:not(.logo) {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transition-duration: 0.2s;
+  }
+
+  @include hover {
+    &::after {
+      left: 0;
+    }
+  }
+}
+
+.active:not(.logo) {
+  pointer-events: none;
+
+  &::after {
+    left: 0;
+  }
+
+}

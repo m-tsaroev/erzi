@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom'
+import classNames from 'classnames'
+import './NavigationLink.scss'
+import { NavLink } from 'react-router-dom'
 
 const NavigationLink = (props) => {
   const { title, children, className, to } = props
 
   return (
-    <Link title={title} aria-label={title} to={to} className={className}>
+    <NavLink title={title} aria-label={title} to={to} className={classNames('navigation-link', className)}>
       {children}
-    </Link>
+    </NavLink>
   )
 }
 

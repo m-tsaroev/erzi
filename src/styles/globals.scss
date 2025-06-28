@@ -1,14 +1,13 @@
 body {
-  @include fluid-text(18, 14);
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-family: var(--font-family-base);
-  // background: black;
+  background: var(--color-light);
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 main {
@@ -21,7 +20,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6,.h6 {
-  color: var(--color-white);
+  color: #000;
 }
 
 h1, .h1 {
@@ -72,10 +71,6 @@ svg * {
 
 a {
   color: inherit;
-
-  @include hover {
-    color: var(--color-red-45);
-  }
 
   &[class] {
     text-decoration: none;
