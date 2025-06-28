@@ -3,6 +3,7 @@ import './Header.scss'
 import classNames from 'classnames'
 import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
+import { CartButton} from '@/components/ui/CartButton'
 
 const Header = () => {
   const links = [
@@ -21,8 +22,8 @@ const Header = () => {
     <header className={classNames('header', isHomePage ? 'header-home' : '')}>
       <div className='header__inner'>
         <div className='header__body'>
-          <nav className='header__menu'>
-            <ul className='header__menu-list '>
+          <nav className='header__menu container'>
+            <ul className='header__menu-list'>
               {links.map(({ title, isLogo, path }, index) => (
                 <li className='header__menu-item' key={index}>
                   {isLogo ? (
@@ -44,7 +45,9 @@ const Header = () => {
               ))}
             </ul>
           </nav>
-          
+          <NavigationLink title="cart-button" to="/cart" className="header__cart-button__link cart-button__link">
+            <CartButton className="header__cart-button" itemsCount={3} />
+          </NavigationLink>
         </div>
       </div>
     </header>

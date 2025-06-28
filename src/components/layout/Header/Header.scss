@@ -5,6 +5,10 @@
   width: 100vw;
   background-color: var(--color-light);
 
+  &__body {
+    position: relative;
+  }
+
   &__menu {
     &-list {
       display: flex;
@@ -27,6 +31,13 @@
         color: var(--color-dark);
       }
     }
+  }
+
+  &__cart-button__link {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    translate: 0 -50%;
   }
 }
 
