@@ -46,6 +46,22 @@
 
   &__cart-button__link {
     right: 50px;
+
+    button {
+      border-color: var(--color-dark);
+
+      .cart-button__icon svg * {
+        fill: var(--color-dark);
+      }
+
+      @include hover {
+        background-color: var(--color-dark);
+
+        .cart-button__icon svg * {
+          fill: var(--color-light);
+        }
+      }
+    }
   }
 }
 
@@ -62,6 +78,25 @@
 
       @include hover {
         color: var(--color-dark);
+      }
+    }
+  }
+
+  .header__cart-button__link {
+    right: 50px;
+    button {
+      border-color: var(--color-light);
+
+      .cart-button__icon svg * {
+        fill: var(--color-light);
+      }
+
+      @include hover {
+        background-color: var(--color-light);
+
+        .cart-button__icon svg * {
+          fill: var(--color-dark);
+        }
       }
     }
   }

@@ -3,7 +3,7 @@ import './Header.scss'
 import classNames from 'classnames'
 import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
-import { CartButton} from '@/components/ui/CartButton'
+import { CartButton } from '@/components/ui/CartButton'
 import { useAuth } from '@/hooks/useAuth'
 import { useIsAdmin } from '@/hooks/useIsAdmin'
 import { useEffect } from 'react'
@@ -20,14 +20,15 @@ const Header = () => {
   const location = useLocation()
 
   const isHomePage = location.pathname === '/'
+  const isCartPage = location.pathname === '/cart'
 
   const { user, setUser } = useAuth()
 
   // ↓↓↓↓ для проверки разкомментируйте 28-30 ↓↓↓↓
 
-  // useEffect(() => {
-  //   setUser({name: 'lala', role: 'admin'})
-  // }, [setUser])
+  useEffect(() => {
+    setUser({ name: 'lala', role: 'admin' })
+  }, [setUser])
 
   const { isAdmin } = useIsAdmin()
 
@@ -36,7 +37,11 @@ const Header = () => {
       <div className='header__inner'>
         <div className='header__body'>
           {isAdmin && (
-            <NavigationLink title="product-list" to="/product-list" className="header__link header__body-link">
+            <NavigationLink
+              title='product-list'
+              to='/product-list'
+              className='header__link header__body-link'
+            >
               СПИСОК ТОВАРОВ
             </NavigationLink>
           )}
@@ -63,9 +68,15 @@ const Header = () => {
               ))}
             </ul>
           </nav>
-          <NavigationLink title="cart-button" to={user ? '/cart' : '/login'} className="header__cart-button__link cart-button__link header__body-link">
-            <CartButton className="header__cart-button" />
-          </NavigationLink>
+          {!isCartPage && (
+            <NavigationLink
+              title='cart-button'
+              to={user ? '/cart' : '/login'}
+              className='header__cart-button__link cart-button__link header__body-link'
+            >
+              <CartButton className='header__cart-button' />
+            </NavigationLink>
+          )}
         </div>
       </div>
     </header>
