@@ -1,5 +1,8 @@
-.navigation-link:not(.logo, .cart-button__link) {
+.navigation-link:not(.header__body-link) {
   position: relative;
+}
+
+.navigation-link:not(.logo, .cart-button__link) {
   overflow: hidden;
 
   &::after {

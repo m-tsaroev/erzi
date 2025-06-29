@@ -6,8 +6,29 @@
   background-color: var(--color-light);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
 
+  &__link {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    font-size: 32px;
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+      color: var(--color-dark);
+    }
+  }
+
   &__body {
     position: relative;
+
+    &-link {
+      @include abs-y;
+
+      color: var(--color-dark);
+
+      &:first-child {
+        left: 50px;
+      }
+    }
   }
 
   &__menu {
@@ -21,24 +42,10 @@
     &-item {
       color: var(--color-dark);
     }
-
-    &-link {
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      text-transform: uppercase;
-      font-size: 32px;
-      transition-duration: var(--transition-duration);
-
-      @include hover {
-        color: var(--color-dark);
-      }
-    }
   }
 
   &__cart-button__link {
-    position: absolute;
     right: 50px;
-    top: 50%;
-    translate: 0 -50%;
   }
 }
 
@@ -49,9 +56,20 @@
   box-shadow: 0px 4px 90px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
 
+  .header__body {
+    &-link {
+      color: var(--color-light);
+
+      @include hover {
+        color: var(--color-dark);
+      }
+    }
+  }
+
   .header__menu {
     &-item {
       color: var(--color-light);
+
       @include hover {
         color: var(--color-dark);
       }

@@ -5,6 +5,8 @@ import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
 import { CartButton} from '@/components/ui/CartButton'
 import { useAuth } from '@/hooks/useAuth'
+import { useIsAdmin } from '@/hooks/useIsAdmin'
+import { useEffect } from 'react'
 
 const Header = () => {
   const links = [
@@ -19,12 +21,25 @@ const Header = () => {
 
   const isHomePage = location.pathname === '/'
 
-  const { user } = useAuth()
+  const { user, setUser } = useAuth()
+
+  // ↓↓↓↓ для проверки разкомментируйте 28-30 ↓↓↓↓
+
+  // useEffect(() => {
+  //   setUser({name: 'lala', role: 'admin'})
+  // }, [setUser])
+
+  const { isAdmin } = useIsAdmin()
 
   return (
     <header className={classNames('header', isHomePage ? 'header-home' : '')}>
       <div className='header__inner'>
         <div className='header__body'>
+          {isAdmin && (
+            <NavigationLink title="product-list" to="/product-list" className="header__link header__body-link">
+              СПИСОК ТОВАРОВ
+            </NavigationLink>
+          )}
           <nav className='header__menu container'>
             <ul className='header__menu-list'>
               {links.map(({ title, isLogo, path }, index) => (
@@ -39,7 +54,7 @@ const Header = () => {
                     <NavigationLink
                       title={title.toLowerCase()}
                       to={path}
-                      className='header__menu-link'
+                      className='header__menu-link header__link'
                     >
                       {title}
                     </NavigationLink>
@@ -48,7 +63,7 @@ const Header = () => {
               ))}
             </ul>
           </nav>
-          <NavigationLink title="cart-button" to={user ? '/cart' : '/login'} className="header__cart-button__link cart-button__link">
+          <NavigationLink title="cart-button" to={user ? '/cart' : '/login'} className="header__cart-button__link cart-button__link header__body-link">
             <CartButton className="header__cart-button" />
           </NavigationLink>
         </div>
