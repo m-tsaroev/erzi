@@ -10,10 +10,10 @@ import { useEffect } from 'react'
 
 const Header = () => {
   const links = [
-    { title: 'УСЛУГИ', isLogo: false, path: '/services' },
+    { title: 'О НАС', isLogo: false, path: '/about' },
     { title: 'КАТАЛОГ', isLogo: false, path: '/catalog' },
     { title: 'Главная страница', isLogo: true, path: '/' },
-    { title: 'О КОМПАНИИ', isLogo: false, path: '/about' },
+    { title: 'УСЛУГИ', isLogo: false, path: '/services' },
     { title: 'КОНТАКТЫ', isLogo: false, path: '/contacts' },
   ]
 
@@ -27,7 +27,7 @@ const Header = () => {
   // ↓↓↓↓ для проверки разкомментируйте 28-30 ↓↓↓↓
 
   useEffect(() => {
-    setUser({ name: 'lala', role: 'admin' })
+    setUser({ name: 'lala', role: 'admin'})
   }, [setUser])
 
   const { isAdmin } = useIsAdmin()

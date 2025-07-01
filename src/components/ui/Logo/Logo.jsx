@@ -1,3 +1,4 @@
+import './Logo.scss'
 import classNames from 'classnames'
 import { NavigationLink } from '../NavigationLink'
 
@@ -10,7 +11,7 @@ const Logo = (props) => {
       className={classNames('logo', className)}
       to='/'
     >
-      <img src='/logo.svg' alt='' width={102} height={102} loading={loading} />
+      <img src='/logo.svg' alt='' width={198} height={97} loading={loading} />
     </NavigationLink>
   )
 }

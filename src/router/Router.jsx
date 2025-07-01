@@ -6,9 +6,6 @@ import { Catalog } from '@/pages/Catalog'
 import { About } from '@/pages/About'
 import { Contacts } from '@/pages/Contacts'
 import { Cart } from '@/pages/Cart'
-import { AuthLayout } from '@/layouts/AuthLayout'
-import { Login } from '@/pages/Login'
-import { Register } from '@/pages/Register'
 import { ProductList } from '@/pages/ProductList'
 import { useIsAdmin } from '@/hooks/useIsAdmin'
 
@@ -26,11 +23,6 @@ const Router = () => {
           <Route path='about' element={<About />} />
           <Route path='contacts' element={<Contacts />} />
           <Route path='cart' element={<Cart />} />
-        </Route>
-
-        <Route path='/' element={<AuthLayout />}>
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>
