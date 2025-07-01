@@ -7,6 +7,7 @@ import { CartButton } from '@/components/ui/CartButton'
 import { useAuth } from '@/hooks/useAuth'
 import { useIsAdmin } from '@/hooks/useIsAdmin'
 import { useEffect } from 'react'
+import { PersonButton } from '@/components/ui/PersonButton'
 
 const Header = () => {
   const links = [
@@ -21,13 +22,14 @@ const Header = () => {
 
   const isHomePage = location.pathname === '/'
   const isCartPage = location.pathname === '/cart'
+  const isProfilePage = location.pathname === '/profile'
 
   const { user, setUser } = useAuth()
 
   // ↓↓↓↓ для проверки разкомментируйте 28-30 ↓↓↓↓
 
   useEffect(() => {
-    setUser({ name: 'lala', role: 'admin'})
+    setUser({ name: 'lala', role: 'user' })
   }, [setUser])
 
   const { isAdmin } = useIsAdmin()
@@ -36,15 +38,27 @@ const Header = () => {
     <header className={classNames('header', isHomePage ? 'header-home' : '')}>
       <div className='header__inner'>
         <div className='header__body'>
-          {isAdmin && (
-            <NavigationLink
-              title='product-list'
-              to='/product-list'
-              className='header__link header__body-link'
-            >
-              СПИСОК ТОВАРОВ
-            </NavigationLink>
+          {user && (
+            <div className='header__body-links__group'>
+              {!isProfilePage && (
+                <PersonButton
+                  title='profile'
+                  to='/profile'
+                  className='header__link header__body-link header__group-link person'
+                />
+              )}
+              {isAdmin && (
+                <NavigationLink
+                  title='product-list'
+                  to='/product-list'
+                  className='header__link header__body-link'
+                >
+                  СПИСОК ТОВАРОВ
+                </NavigationLink>
+              )}
+            </div>
           )}
+
           <nav className='header__menu container'>
             <ul className='header__menu-list'>
               {links.map(({ title, isLogo, path }, index) => (

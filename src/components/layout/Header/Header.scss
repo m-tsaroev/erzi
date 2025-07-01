@@ -31,13 +31,27 @@
   &__body {
     position: relative;
 
-    &-link {
+    &-links__group {
       @include abs-y;
 
+      left: 50px;
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    &-link {
+      position: relative;
       color: var(--color-dark);
 
-      &:first-child {
-        left: 50px;
+      &.person {
+        &::after {
+          display: none;
+        }
+
+        @include hover {
+          background-color: var(--color-light);
+        }
       }
     }
   }
@@ -56,6 +70,8 @@
   }
 
   &__cart-button__link {
+    @include abs-y;
+
     right: 50px;
 
     button {

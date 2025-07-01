@@ -8,6 +8,7 @@ import { Contacts } from '@/pages/Contacts'
 import { Cart } from '@/pages/Cart'
 import { ProductList } from '@/pages/ProductList'
 import { useIsAdmin } from '@/hooks/useIsAdmin'
+import { Profile } from '@/pages/Profile'
 
 const Router = () => {
   const { isAdmin } = useIsAdmin()
@@ -23,6 +24,7 @@ const Router = () => {
           <Route path='about' element={<About />} />
           <Route path='contacts' element={<Contacts />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='profile' element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
