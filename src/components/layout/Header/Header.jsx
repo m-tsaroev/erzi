@@ -3,73 +3,41 @@ import './Header.scss'
 import classNames from 'classnames'
 import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
-import { CartButton } from '@/components/ui/CartButton'
-import { useAuth } from '@/hooks/useAuth'
-import { useIsAdmin } from '@/hooks/useIsAdmin'
-import { useEffect } from 'react'
-import { PersonButton } from '@/components/ui/PersonButton'
+import { HeaderButton } from '@/components/ui/HeaderButton'
 
 const Header = () => {
   const links = [
-    { title: 'О НАС', isLogo: false, path: '/about' },
-    { title: 'КАТАЛОГ', isLogo: false, path: '/catalog' },
-    { title: 'Главная страница', isLogo: true, path: '/' },
-    { title: 'УСЛУГИ', isLogo: false, path: '/services' },
-    { title: 'КОНТАКТЫ', isLogo: false, path: '/contacts' },
+    { title: 'Profile', isLogo: false, path: '/profile', icon: 'person' },
+    { title: 'О НАС', isLogo: false, path: '/about', icon: '' },
+    { title: 'КАТАЛОГ', isLogo: false, path: '/catalog', icon: '' },
+    { title: 'Главная страница', isLogo: true, path: '/', icon: '' },
+    { title: 'УСЛУГИ', isLogo: false, path: '/services', icon: '' },
+    { title: 'КОНТАКТЫ', isLogo: false, path: '/contacts', icon: '' },
+    { title: 'Cart', isLogo: false, path: '/cart', icon: 'cart', itemsCount: '' },
   ]
 
   const location = useLocation()
 
   const isHomePage = location.pathname === '/'
-  const isCartPage = location.pathname === '/cart'
-  const isProfilePage = location.pathname === '/profile'
-
-  const { user, setUser } = useAuth()
 
   // ↓↓↓↓ для проверки разкомментируйте 28-30 ↓↓↓↓
-
-  useEffect(() => {
-    setUser({ name: 'lala', role: 'user' })
-  }, [setUser])
-
-  const { isAdmin } = useIsAdmin()
 
   return (
     <header className={classNames('header', isHomePage ? 'header-home' : '')}>
       <div className='header__inner'>
         <div className='header__body'>
-          {user && (
-            <div className='header__body-links__group'>
-              {!isProfilePage && (
-                <PersonButton
-                  title='profile'
-                  to='/profile'
-                  className='header__link header__body-link header__group-link person'
-                />
-              )}
-              {isAdmin && (
-                <NavigationLink
-                  title='product-list'
-                  to='/product-list'
-                  className='header__link header__body-link'
-                >
-                  СПИСОК ТОВАРОВ
-                </NavigationLink>
-              )}
-            </div>
-          )}
-
-          <nav className='header__menu container'>
+          <nav className='header__menu'>
             <ul className='header__menu-list'>
-              {links.map(({ title, isLogo, path }, index) => (
+              {links.map(({ title, isLogo, path, icon, itemsCount }, index) => (
                 <li className='header__menu-item' key={index}>
-                  {isLogo ? (
+                  {isLogo && (
                     <Logo
                       title={title}
                       loading='eager'
                       className='header__logo'
                     />
-                  ) : (
+                  )}
+                  {!isLogo && !icon && (
                     <NavigationLink
                       title={title.toLowerCase()}
                       to={path}
@@ -78,19 +46,19 @@ const Header = () => {
                       {title}
                     </NavigationLink>
                   )}
+                  {icon && (
+                    <HeaderButton
+                      title={title}
+                      to={path}
+                      className="header__menu-link"
+                      icon={icon}
+                      itemsCount={itemsCount}
+                    />
+                  )}
                 </li>
               ))}
             </ul>
           </nav>
-          {!isCartPage && (
-            <NavigationLink
-              title='cart-button'
-              to={user ? '/cart' : '/login'}
-              className='header__cart-button__link cart-button__link header__body-link'
-            >
-              <CartButton className='header__cart-button' />
-            </NavigationLink>
-          )}
         </div>
       </div>
     </header>

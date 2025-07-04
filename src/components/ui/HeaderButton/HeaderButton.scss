@@ -1,12 +1,16 @@
-.cart-button {
+.header__button {
   @include flex-center;
 
   background: transparent;
-  border: 1px solid transparent;
+  border: 1px solid var(--color-dark);
   border-radius: 50%;
   padding: 14px;
 
-  &__icon {
+  &::after {
+    display: none;
+  }
+
+  &-icon {
     line-height: 0;
 
     svg * {
