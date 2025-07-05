@@ -54,10 +54,10 @@ const Footer = () => {
               </div>
             </form>
             <div className='footer__body-links'>
-              <a href='/' className='footer__body-link'>
+              <a href='/'>
                 СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ
               </a>
-              <a href='/' className='footer__body-link'>
+              <a href='/'>
                 ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
               </a>
             </div>
@@ -84,8 +84,8 @@ const Footer = () => {
             </div>
           </div>
           <div className='footer__extra'>
-            <span className='footer__extra-text'>Email: zakaz@erziaqua.ru</span>
-            <span className='footer__extra-text'>
+            <span>Email: <a href='mailto:zakaz@erziaqua.ru' >zakaz@erziaqua.ru</a></span>
+            <span>
               2025 ООО «Торговый Дом «Эрзи» ИНН 7725333472/ КПП 772401001 ОГРН
               1167746906898
             </span>
