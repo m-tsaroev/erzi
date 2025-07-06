@@ -1,0 +1,9 @@
+.way {
+  padding-block: 65px;
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

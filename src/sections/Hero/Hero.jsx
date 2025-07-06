@@ -4,7 +4,7 @@ const Hero = () => {
   const titleId = 'Hero-title'
 
   return (
-    <section className='hero' aria-labelledby={titleId}>
+    <section className='hero hero-section' aria-labelledby={titleId}>
       <div className='hero__inner'>
         <div className='hero__body container'>
           <h2 className='hero__title' id={titleId}>Почувствуй молодость на вкус</h2>
