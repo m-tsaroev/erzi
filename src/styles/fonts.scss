@@ -47,9 +47,17 @@
 }
 
 @font-face {
-  font-family: 'Accidental Presidency (Rus by Lomzz)';
+  font-family: 'Inter';
   src: url('../assets/fonts/Inter28pt-ExtraBold.woff2') format('woff2');
   font-weight: 900;
+  font-size: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('../assets/fonts/RobotoCondensed-Bold.woff2') format('woff2');
+  font-weight: 700;
   font-size: normal;
   font-display: swap;
 }
