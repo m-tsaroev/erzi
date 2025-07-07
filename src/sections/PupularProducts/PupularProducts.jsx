@@ -21,7 +21,6 @@ const PupularProducts = () => {
       })
       .finally(() => {
         setIsLoading(false)
-        console.log('lala')
       })
   }, [])
 
@@ -53,7 +52,7 @@ const PupularProducts = () => {
 
                 return (
                   <ProductCard
-                    id={id}
+                    key={id}
                     title={title}
                     description={description}
                     price={price}

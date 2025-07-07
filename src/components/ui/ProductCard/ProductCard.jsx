@@ -1,10 +1,10 @@
 import classNames from 'classnames'
 import './ProductCard.scss'
 import { formatPrice } from '@/utils/formatPrice'
+import { ProductButton } from '../ProductButton'
 
 const ProductCard = (props) => {
   const {
-    id,
     title,
     description,
     image_url,
@@ -14,7 +14,7 @@ const ProductCard = (props) => {
   } = props
 
   return (
-    <li className={classNames('product-card__item', className)} key={id}>
+    <li className={classNames('product-card__item', className)}>
       <div className='product-card__item__body'>
         <div className='product-card__item-image'>
           <img
@@ -34,6 +34,7 @@ const ProductCard = (props) => {
             <p>{description}</p>
           </div>
         </div>
+        <ProductButton />
       </div>
     </li>
   )

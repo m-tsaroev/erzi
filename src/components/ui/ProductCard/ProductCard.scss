@@ -2,6 +2,12 @@
   &__item {
     border-radius: var(--border-radius);
     background-color: var(--color-light);
+    transition-duration: var(--transition-duration);
+    cursor: pointer;
+
+    @include hover {
+      transform: translateY(-5px);
+    }
 
     &__body {
       display: flex;
@@ -41,9 +47,10 @@
     &-info {
       width: 100%;
       max-width: 232px;
-      font-family: 'Inter';
+      font-family: 'Inter', sans-serif;
       display: grid;
       row-gap: 5px;
+      margin-bottom: 15px;
     }
 
     &-title {
@@ -60,6 +67,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         overflow: hidden;
+        height: 30px;
       }
     }
   }

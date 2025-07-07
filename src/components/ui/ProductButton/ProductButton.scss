@@ -1,0 +1,15 @@
+.product-button {
+  padding: 12px 40px;
+  background: linear-gradient(180deg, #0F1C2E 0%, #163B5A 52.4%, #001A36 100%);
+  border: none;
+  border-radius: 100px;
+  
+
+  span {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-light);
+  }
+}
