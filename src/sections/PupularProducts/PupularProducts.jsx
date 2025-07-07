@@ -3,7 +3,7 @@ import './PupularProducts.scss'
 import { getProducts } from '@/services/products/getProducts'
 import { Link } from 'react-router-dom'
 import deffaultImg from '@/assets/images/popular-products/bottles.png'
-import { formatPrice } from '@/utils/formatPrice'
+import { ProductCard } from '@/components/ui/ProductCard'
 
 const PupularProducts = () => {
   const [products, setProducts] = useState([])
@@ -17,11 +17,11 @@ const PupularProducts = () => {
       })
       .catch((err) => {
         setErrorMessage(err.message)
-        console.log(err);
+        console.log(err)
       })
       .finally(() => {
         setIsLoading(false)
-        console.log('lala');
+        console.log('lala')
       })
   }, [])
 
@@ -43,37 +43,29 @@ const PupularProducts = () => {
       </header>
       <div className='popular-products__body'>
         <ul className='popular-products__list'>
-          {products ? products.map(
-            ({ id, title, description, price, image_url, quantity }, index) => {
-              if (index >= 4) return 
+          {products ? (
+            products.map(
+              (
+                { id, title, description, price, image_url, quantity },
+                index
+              ) => {
+                if (index >= 4) return
 
-              return (<li className='popular-products__item' key={id}>
-                <div className='popular-products__item__body'>
-                  <div className='popular-products__item-image'>
-                    <img
-                      src={image_url ? image_url : deffaultImg}
-                      alt=''
-                      width={232}
-                      height={188}
-                    />
-                  </div>
-                  <div className='popular-products__item-price'>
-                    <span>{formatPrice(price)} ₽</span>
-                    <span>{quantity}шт</span>
-                  </div>
-                  <div className='popular-products__item-info'>
-                    <h5 className='popular-products__item-title'>{title}</h5>
-                    <div className='popular-products__item-description'>
-                      <p>{description}</p>
-                    </div>
-                  </div>
-                </div>
-              </li>)
-            }
+                return (
+                  <ProductCard
+                    id={id}
+                    title={title}
+                    description={description}
+                    price={price}
+                    image_url={image_url ? image_url : deffaultImg}
+                    quantity={quantity}
+                    className='popular-products__item'
+                  />
+                )
+              }
+            )
           ) : (
-            <h1>
-              Нет продуктов
-            </h1>
+            <h1>Нет продуктов</h1>
           )}
         </ul>
       </div>
