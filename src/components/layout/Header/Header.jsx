@@ -20,10 +20,8 @@ const Header = () => {
 
   const isHomePage = location.pathname === '/'
 
-  // ↓↓↓↓ для проверки разкомментируйте 28-30 ↓↓↓↓
-
   return (
-    <header className={classNames('header', isHomePage ? 'header-home' : '')}>
+    <header className={classNames('header', isHomePage ? 'header-home' : '')} >
       <div className='header__inner'>
         <div className='header__body'>
           <nav className='header__menu'>

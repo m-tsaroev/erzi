@@ -1,14 +1,14 @@
 import { Hero } from '@/sections/Hero'
 import './Home.scss'
 import { Way } from '@/sections/Way'
-import { PupularProducts } from '@/sections/PupularProducts'
+import { PopularProducts } from '@/sections/PopularProducts'
 
 const Home = () => {
   return (
     <>
       <Hero />
       <Way />
-      <PupularProducts />
+      <PopularProducts />
     </>
   )
 }

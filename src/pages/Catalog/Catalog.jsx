@@ -1,5 +1,7 @@
+import { CatalogProducts } from "@/sections/CatalogProducts"
+
 const Catalog = () => {
-  return <h1>Catalog</h1>
+  return <CatalogProducts /> 
 }
 
 export { Catalog }

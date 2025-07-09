@@ -2,10 +2,12 @@ import classNames from 'classnames'
 import './ProductButton.scss'
 
 const ProductButton = (props) => {
-  const { className } = props
+  const { className, mode = '' } = props
 
   return (
-    <button className={classNames('product-button', className)}>
+    <button className={classNames('product-button', className, {
+      [`product-button--${mode}`]: mode,
+    })}>
       <span>Добавить в корзину</span>
     </button>
   )

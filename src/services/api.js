@@ -17,7 +17,13 @@ const api = async (path, options = {}) => {
   const res = await fetch(url, config)
 
   if (!res.ok) {
-    const errorMessage = await res.text()
+    let errorMessage
+
+    if (res.status > 400) {
+      errorMessage = 'Проблемы с сервером'
+    } else {
+      errorMessage = await res.text()
+    }
     throw new Error(errorMessage || res.status)
   }
 

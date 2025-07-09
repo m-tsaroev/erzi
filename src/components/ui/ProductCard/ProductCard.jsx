@@ -10,7 +10,8 @@ const ProductCard = (props) => {
     image_url,
     price,
     quantity,
-    className
+    className,
+    modeButton = ''
   } = props
 
   return (
@@ -34,7 +35,7 @@ const ProductCard = (props) => {
             <p>{description}</p>
           </div>
         </div>
-        <ProductButton />
+        <ProductButton mode={modeButton} />
       </div>
     </li>
   )

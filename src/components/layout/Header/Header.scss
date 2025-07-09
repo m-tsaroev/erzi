@@ -3,7 +3,7 @@
   z-index: 100;
   top: 0;
   width: 100vw;
-  background-color: var(--color-light);
+  background-color: var(--color-dark);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
   padding-block: 26px;
   animation-name: scrolling-header;
@@ -22,10 +22,7 @@
     text-transform: uppercase;
     font-size: 32px;
     transition-duration: var(--transition-duration);
-
-    @include hover {
-      color: var(--color-dark);
-    }
+    color: var(--color-light);
   }
 
   &__button {
@@ -33,7 +30,17 @@
 
     .header__button-icon {
       svg * {
-        fill: var(--color-dark);
+        fill: var(--color-light);
+      }
+    }
+
+    @include hover {
+      background-color: var(--color-light);
+
+      .header__button-icon {
+        svg * {
+          fill: var(--color-dark);
+        }
       }
     }
   }
@@ -89,16 +96,6 @@
 
   .header__button {
     border-color: var(--color-light);
-
-    @include hover {
-      background-color: var(--color-light);
-
-      .header__button-icon {
-        svg * {
-          fill: var(--color-dark);
-        }
-      }
-    }
 
     &-icon {
       svg * {

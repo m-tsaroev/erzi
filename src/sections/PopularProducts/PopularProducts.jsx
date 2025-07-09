@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import './PupularProducts.scss'
+import './PopularProducts.scss'
 import { getProducts } from '@/services/products/getProducts'
 import { Link } from 'react-router-dom'
 import deffaultImg from '@/assets/images/popular-products/bottles.png'
 import { ProductCard } from '@/components/ui/ProductCard'
 
-const PupularProducts = () => {
+const PopularProducts = () => {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
@@ -25,7 +25,7 @@ const PupularProducts = () => {
   }, [])
 
   if (isLoading) return <h1>...loading</h1>
-  if (errorMessage) return <h1>{errorMessage}</h1>
+  if (errorMessage) return <h1>ошибка</h1>
 
   const titleId = 'Popular-products-title'
 
@@ -72,4 +72,4 @@ const PupularProducts = () => {
   )
 }
 
-export { PupularProducts }
+export { PopularProducts }
