@@ -22,6 +22,10 @@
       background: transparent;
       border: none;
     }
+
+    &-reset-button {
+      cursor: pointer;
+    }
   }
 
   &__list {

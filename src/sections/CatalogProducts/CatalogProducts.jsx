@@ -35,6 +35,10 @@ const CatalogProducts = () => {
     setSearchFieltValue(event.target.value)
   }
 
+  const onResetButtonClick = () => {
+    setSearchFieltValue('')
+  }
+
   return (
     <section
       className='catalog-products__section catalog-products'
@@ -60,6 +64,19 @@ const CatalogProducts = () => {
             onChange={onChangeField}
             placeholder='Поиск'
           />
+          {searchFieldValue.length > 3 && (
+            <div
+              className='catalog-products__search-reset-button'
+              onClick={onResetButtonClick}
+            >
+              <InlineSVG
+                title='Reset'
+                src='/cross.svg'
+                width={16}
+                height={16}
+              />
+            </div>
+          )}
         </div>
       </header>
       <div className='catalog-products__body container'>
