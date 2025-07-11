@@ -1,0 +1,36 @@
+.filter-chip {
+  &__button {
+    padding: 8px;
+    background-color: var(--color-light-05);
+    color: var(--color-gray-05);
+    border: none;
+    border-radius: var(--border-radius-m);
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+
+    @include hover {
+      background-color: var(--color-blue-01);
+      color: var(--color-light);
+    }
+
+    &.is-checked {
+      position: relative;
+      padding-left: 32px;
+      background-color: var(--color-blue-03);
+      color: var(--color-light-05);
+
+      &::before {
+        @include abs-y;
+        @include square(16px);
+
+        content: '';
+        left: 8px;
+        background: url('../../../assets/icons/checkmark.svg') 50% 50% / contain;
+      }
+    }
+  }
+}

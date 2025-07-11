@@ -4,6 +4,18 @@
   display: grid;
   row-gap: 25px;
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__filter-chips {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+
   &__search {
     display: flex;
     align-items: center;
