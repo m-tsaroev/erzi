@@ -7,12 +7,16 @@ import deffaultImg from '@/assets/images/popular-products/bottles.png'
 import { FilterChip } from '@/components/ui/FilterChip'
 
 const CatalogProducts = () => {
+  const storageKey = 'productCategories'
+
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
   const [searchFieldValue, setSearchFieltValue] = useState('')
   const [categories, setCategories] = useState([])
-  const [productInCategories, setProductInCategories] = useState([])
+  const [productInCategories, setProductInCategories] = useState(
+    JSON.parse(sessionStorage.getItem(storageKey)) || []
+  )
 
   useEffect(() => {
     getProducts()
@@ -53,17 +57,37 @@ const CatalogProducts = () => {
     setSearchFieltValue('')
   }
 
+  const onFilterChipLoad = (event) => {
+    const { target } = event
+    const categoryName = target.innerText
+
+    target.classList.toggle(
+      'is-checked',
+      productInCategories.includes(categoryName)
+    )
+  }
+
   const onFilterChipClick = (event) => {
     const { target } = event
     const categoryName = target.innerText
 
     target.classList.toggle('is-checked')
     setProductInCategories((categoriesList) => {
-      return !categoriesList.includes(categoryName)
-        ? [...categoriesList, categoryName]
-        : categoriesList.filter((categoriesItem) => {
-            return categoriesItem !== categoryName
-          })
+      if (!categoriesList.includes(categoryName)) {
+        sessionStorage.setItem(
+          storageKey,
+          JSON.stringify([...categoriesList, categoryName])
+        )
+        return [...categoriesList, categoryName]
+      } else {
+        const filtedCategories = categoriesList.filter((categoriesItem) => {
+          return categoriesItem !== categoryName
+        })
+
+        sessionStorage.setItem(storageKey, JSON.stringify(filtedCategories))
+
+        return filtedCategories
+      }
     })
   }
 
@@ -113,6 +137,7 @@ const CatalogProducts = () => {
               isChecked={false}
               key={index}
               onClick={onFilterChipClick}
+              onLoad={onFilterChipLoad}
             />
           ))}
         </div>
