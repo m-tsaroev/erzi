@@ -1,6 +1,6 @@
 import './CatalogProducts.scss'
 import { useState, useEffect } from 'react'
-import { getProducts } from '@/services/products/getProducts'
+import { getProducts } from '@/services/productsServices/getProducts'
 import InlineSVG from 'react-inlinesvg'
 import { ProductCard } from '@/components/ui/ProductCard'
 import deffaultImg from '@/assets/images/popular-products/bottles.png'

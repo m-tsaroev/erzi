@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './PopularProducts.scss'
-import { getProducts } from '@/services/products/getProducts'
+import { getProducts } from '@/services/productsServices/getProducts'
 import { Link } from 'react-router-dom'
 import deffaultImg from '@/assets/images/popular-products/bottles.png'
 import { ProductCard } from '@/components/ui/ProductCard'
