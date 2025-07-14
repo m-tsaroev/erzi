@@ -7,17 +7,14 @@ import { About } from '@/pages/About'
 import { Contacts } from '@/pages/Contacts'
 import { Cart } from '@/pages/Cart'
 import { ProductList } from '@/pages/ProductList'
-import { useIsAdmin } from '@/hooks/useIsAdmin'
 import { Profile } from '@/pages/Profile'
 
 const Router = () => {
-  const { isAdmin } = useIsAdmin()
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MainLayout />}>
-          {isAdmin && <Route path='/product-list' element={<ProductList />} />}
+          {/* {isAdmin && <Route path='/product-list' element={<ProductList />} />} */}
           <Route index element={<Home />} />
           <Route path='services' element={<Services />} />
           <Route path='catalog' element={<Catalog />} />
