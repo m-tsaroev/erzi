@@ -1,9 +1,11 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './Header.scss'
 import classNames from 'classnames'
 import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
 import { HeaderButton } from '@/components/ui/HeaderButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { openLoginModal } from '@/store/slices/uiSlice'
 
 const Header = () => {
   const links = [
@@ -13,15 +15,32 @@ const Header = () => {
     { title: 'Главная страница', isLogo: true, path: '/', icon: '' },
     { title: 'УСЛУГИ', isLogo: false, path: '/services', icon: '' },
     { title: 'КОНТАКТЫ', isLogo: false, path: '/contacts', icon: '' },
-    { title: 'Cart', isLogo: false, path: '/cart', icon: 'cart', itemsCount: '' },
+    {
+      title: 'Cart',
+      isLogo: false,
+      path: '/cart',
+      icon: 'cart',
+      itemsCount: '',
+    },
   ]
 
+  const navigate = useNavigate()
   const location = useLocation()
+  const dispatch = useDispatch()
+  const isAuth = useSelector((state) => !!state.auth.accessToken)
 
   const isHomePage = location.pathname === '/'
 
+  const onCartButtonClick = () => {
+    if (!isAuth) {
+      dispatch(openLoginModal())
+    } else {
+      navigate('/cart')
+    }
+  }
+
   return (
-    <header className={classNames('header', isHomePage ? 'header-home' : '')} >
+    <header className={classNames('header', isHomePage ? 'header-home' : '')}>
       <div className='header__inner'>
         <div className='header__body'>
           <nav className='header__menu'>
@@ -48,9 +67,10 @@ const Header = () => {
                     <HeaderButton
                       title={title}
                       to={path}
-                      className="header__menu-link"
+                      className='header__menu-link'
                       icon={icon}
                       itemsCount={itemsCount}
+                      onClick={onCartButtonClick}
                     />
                   )}
                 </li>

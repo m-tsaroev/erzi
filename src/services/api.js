@@ -11,7 +11,7 @@ const api = async (path, options = {}) => {
     ...options,
   }
 
-  if (options.body && typeof options.body === 'string') {
+  if (options.body && typeof options.body === 'object') {
     config.body = JSON.stringify(options.body)
   }
 
@@ -20,11 +20,12 @@ const api = async (path, options = {}) => {
   if (!res.ok) {
     let errorMessage
 
-    if (res.status > 400) {
+    if (res.status === 401) {
       errorMessage = 'Проблемы с сервером'
     } else {
       errorMessage = await res.text()
     }
+
     throw new Error(errorMessage || res.status)
   }
 

@@ -1,0 +1,23 @@
+.message {
+  @include flex-center;
+
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  translate: -50%;
+  width: 200px;
+  height: 50px;
+  background-color: var(--color-blue);
+  border: var(--border);
+  border-radius: calc(var(--border-radius) / 2);
+  z-index: 151;
+
+  &.success {
+    color: var(--color-blue-01);
+  }
+
+  &.error {
+    background-color: var(--color-dark);
+    color: red;
+  }
+}

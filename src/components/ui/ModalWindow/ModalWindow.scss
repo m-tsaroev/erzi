@@ -1,0 +1,17 @@
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-overlay {
+  @include abs-cover;
+  @include flex-center;
+
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 150;
+
+  // ключевой момент
+  opacity: 0;                                    // стартовое состояние
+  animation: fadeIn var(--transition-duration-longer) ease forwards;
+}
