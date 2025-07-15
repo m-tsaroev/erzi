@@ -1,11 +1,9 @@
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import './Header.scss'
 import classNames from 'classnames'
 import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
 import { HeaderButton } from '@/components/ui/HeaderButton'
-import { useDispatch, useSelector } from 'react-redux'
-import { openLoginModal } from '@/store/slices/uiSlice'
 
 const Header = () => {
   const links = [
@@ -24,20 +22,9 @@ const Header = () => {
     },
   ]
 
-  const navigate = useNavigate()
   const location = useLocation()
-  const dispatch = useDispatch()
-  const isAuth = useSelector((state) => !!state.auth.accessToken)
 
   const isHomePage = location.pathname === '/'
-
-  const onCartButtonClick = () => {
-    if (!isAuth) {
-      dispatch(openLoginModal())
-    } else {
-      navigate('/cart')
-    }
-  }
 
   return (
     <header className={classNames('header', isHomePage ? 'header-home' : '')}>
@@ -70,7 +57,6 @@ const Header = () => {
                       className='header__menu-link'
                       icon={icon}
                       itemsCount={itemsCount}
-                      onClick={onCartButtonClick}
                     />
                   )}
                 </li>

@@ -6,6 +6,7 @@ const uiSlice = createSlice({
     isLoginModalOpen: false,
     isErrorShow: false,
     isSuccessShow: false,
+    messageText: '',
   },
   reducers: {
     openLoginModal: (state) => {
@@ -28,6 +29,9 @@ const uiSlice = createSlice({
     hideSuccessMessage: (state) => {
       state.isSuccessShow = false
     },
+    addMessageText: (state, action) => {
+      state.messageText = action.payload
+    }
   },
 })
 
@@ -38,6 +42,7 @@ const {
   hideErrorMessage,
   showSuccessMessage,
   hideSuccessMessage,
+  addMessageText
 } = uiSlice.actions
 
 export {
@@ -47,5 +52,6 @@ export {
   hideErrorMessage,
   showSuccessMessage,
   hideSuccessMessage,
+  addMessageText
 }
 export default uiSlice.reducer

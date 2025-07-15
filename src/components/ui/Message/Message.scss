@@ -11,6 +11,7 @@
   border: var(--border);
   border-radius: calc(var(--border-radius) / 2);
   z-index: 151;
+  text-align: center;
 
   &.success {
     color: var(--color-blue-01);

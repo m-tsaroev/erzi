@@ -8,6 +8,7 @@
   height: 570px;
   padding: 0 24px;
   padding-top: 55px;
+  z-index: 200;
 
   &__logo {
     img {
@@ -41,6 +42,7 @@
 
     &--error {
       border-color: var(--color-red);
+      color: var(--color-red);
     }
 
     &__required-message {
@@ -70,4 +72,9 @@
     background-color: var(--color-accent-blue);
     border-color: var(--color-accent-blue);
   }
+}
+
+.field {
+  display: grid;
+  row-gap: 5px;
 }

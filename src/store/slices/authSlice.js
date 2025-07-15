@@ -16,11 +16,25 @@ const login = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       return await api('/user/login', {
-        method: 'post',
+        method: 'POST',
         body: credentials,
       })
     } catch (error) {
       return rejectWithValue(error.message || 'Ошибка входа')
+    }
+  }
+)
+
+const registration = createAsyncThunk(
+  'auth/registration',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      return await api('/user/create', {
+        method: 'POST',
+        body: credentials,
+      })
+    } catch (error) {
+      return rejectWithValue(error.message || 'Ошибка регистрации')
     }
   }
 )
@@ -40,28 +54,34 @@ const authSlice = createSlice({
       .addCase(login.pending, (state) => {
         state.loading = true
         state.error = null
-        console.log('pending');
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false
         localStorage.setItem(tokenStorageKey, action.payload.token)
-        console.log(action.payload.token);
         const userDecode = jwtDecode(action.payload.token)
         state.user = userDecode
         state.accessToken = action.payload.token
-        console.log('fulfilled');
-        console.log(localStorage.getItem(tokenStorageKey));
       })
       .addCase(login.rejected, (state, action) => {
-        console.log(action.payload);
         state.loading = false
         state.error = action.payload
-        console.log('rejected', action.payload, action.payload, action);
+      })
+
+      .addCase(registration.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(registration.fulfilled, (state) => {
+        state.loading = false
+      })
+      .addCase(registration.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
       })
   },
 })
 
 const { logout } = authSlice.actions
 
-export { logout, login }
+export { logout, login, registration }
 export default authSlice.reducer

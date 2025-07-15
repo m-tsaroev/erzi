@@ -17,6 +17,7 @@ const MainLayout = () => {
   const isErrorMessageShow = useSelector((state) => state.ui.isErrorShow)
   const isSuccessMessageShow = useSelector((state) => state.ui.isSuccessShow)
   const errorMessage = useSelector((state) => state.auth.error)
+  const successMessage = useSelector((state) => state.ui.messageText)
 
   document.body.classList.toggle('home', isHomePage)
 
@@ -36,7 +37,7 @@ const MainLayout = () => {
       </AnimatePresence>
       <Message
         show={isErrorMessageShow || isSuccessMessageShow}
-        message={errorMessage ? errorMessage : 'Вы зарегестрированы'}
+        message={errorMessage ? errorMessage : successMessage}
         mode={isErrorMessageShow ? 'error' : 'success'}
       />
     </>
