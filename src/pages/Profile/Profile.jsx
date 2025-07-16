@@ -1,3 +1,4 @@
+import { PATHS } from '@/config/paths'
 import './Profile.scss'
 import { logout } from "@/store/slices/authSlice"
 import { useDispatch } from "react-redux"
@@ -11,7 +12,7 @@ const Profile = () => {
     <div className="profile">
       <button onClick={() => {
         dispatch(logout())
-        navigate('/')
+        navigate(PATHS.HOME)
       }}>LOGOUT</button>
     </div>
   )

@@ -1,3 +1,4 @@
+import { PATHS } from '@/config/paths'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -8,8 +9,8 @@ const Cart = () => {
   const navigation = useNavigate()
 
   useEffect(() => {
-    if (location.pathname === '/cart' && !isAuth) {
-      navigation('/')
+    if (location.pathname === PATHS.CART && !isAuth) {
+      navigation(PATHS.HOME)
     }
   }, [isAuth, navigation, location.pathname])
 

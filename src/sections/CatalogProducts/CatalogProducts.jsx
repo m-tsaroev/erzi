@@ -57,21 +57,10 @@ const CatalogProducts = () => {
     setSearchFieltValue('')
   }
 
-  const onFilterChipLoad = (event) => {
-    const { target } = event
-    const categoryName = target.innerText
-
-    target.classList.toggle(
-      'is-checked',
-      productInCategories.includes(categoryName)
-    )
-  }
-
   const onFilterChipClick = (event) => {
     const { target } = event
     const categoryName = target.innerText
 
-    target.classList.toggle('is-checked')
     setProductInCategories((categoriesList) => {
       if (!categoriesList.includes(categoryName)) {
         sessionStorage.setItem(
@@ -134,10 +123,9 @@ const CatalogProducts = () => {
           {categories.map((category, index) => (
             <FilterChip
               title={category}
-              isChecked={false}
+              isChecked={productInCategories.includes(category)}
               key={index}
               onClick={onFilterChipClick}
-              onLoad={onFilterChipLoad}
             />
           ))}
         </div>
@@ -155,6 +143,7 @@ const CatalogProducts = () => {
               ({ id, title, description, price, image_url, quantity }) => {
                 return (
                   <ProductCard
+                    id={id}
                     key={id}
                     title={title}
                     description={description}

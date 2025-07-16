@@ -1,15 +1,10 @@
 import './Footer.scss'
 import { Logo } from '@/components/ui/Logo'
 import { NavigationLink } from '@/components/ui/NavigationLink'
+import { links } from '@/config/navLinks'
+import { PATHS } from '@/config/paths'
 
 const Footer = () => {
-  const links = [
-    { title: 'О НАС', isLogo: false, path: '/about' },
-    { title: 'КАТАЛОГ', isLogo: false, path: '/catalog' },
-    { title: 'УСЛУГИ', isLogo: false, path: '/services' },
-    { title: 'КОНТАКТЫ', isLogo: false, path: '/contacts' },
-  ]
-
   return (
     <div className='footer'>
       <div className='footer__inner inner container'>
@@ -23,17 +18,19 @@ const Footer = () => {
                 isLight
               />
             </li>
-            {links.map(({ title, path }, index) => (
-              <li className='footer__menu-item' key={index}>
-                <NavigationLink
-                  title={title.toLowerCase()}
-                  to={path}
-                  className='footer__menu-link footer__link'
-                >
-                  {title}
-                </NavigationLink>
-              </li>
-            ))}
+            {links.map(({ title, path, icon, isLogo }, index) => {
+              return icon === null && !isLogo && (
+                <li className='footer__menu-item' key={index}>
+                  <NavigationLink
+                    title={title.toLowerCase()}
+                    to={path}
+                    className='footer__menu-link footer__link'
+                  >
+                    {title}
+                  </NavigationLink>
+                </li>
+              )
+            })}
           </ul>
         </nav>
         <div className='footer__grid'>
@@ -54,12 +51,8 @@ const Footer = () => {
               </div>
             </form>
             <div className='footer__body-links'>
-              <a href='/'>
-                СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ
-              </a>
-              <a href='/'>
-                ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
-              </a>
+              <a href={PATHS.HOME}>СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ</a>
+              <a href={PATHS.HOME}>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
             </div>
             <div className='footer__body-info'>
               <div className='footer__body-schedule'>
@@ -84,7 +77,9 @@ const Footer = () => {
             </div>
           </div>
           <div className='footer__extra'>
-            <span>Email: <a href='mailto:zakaz@erziaqua.ru' >zakaz@erziaqua.ru</a></span>
+            <span>
+              Email: <a href='mailto:zakaz@erziaqua.ru'>zakaz@erziaqua.ru</a>
+            </span>
             <span>
               2025 ООО «Торговый Дом «Эрзи» ИНН 7725333472/ КПП 772401001 ОГРН
               1167746906898

@@ -5,6 +5,7 @@ import { ProductButton } from '../ProductButton'
 
 const ProductCard = (props) => {
   const {
+    id,
     title,
     description,
     image_url,
@@ -35,7 +36,7 @@ const ProductCard = (props) => {
             <p>{description}</p>
           </div>
         </div>
-        <ProductButton mode={modeButton} />
+        <ProductButton mode={modeButton} id={id} />
       </div>
     </li>
   )

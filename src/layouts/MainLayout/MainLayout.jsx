@@ -7,11 +7,13 @@ import { ModalWindow } from '@/components/ui/ModalWindow'
 import Message from '@/components/ui/Message'
 import { Form } from '@/components/ui/Form'
 import { AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
+import { PATHS } from '@/config/paths'
 
 const MainLayout = () => {
   const location = useLocation()
 
-  const isHomePage = location.pathname === '/'
+  const isHomePage = location.pathname === PATHS.HOME
 
   const isLoginModalOpened = useSelector((state) => state.ui.isLoginModalOpen)
   const isErrorMessageShow = useSelector((state) => state.ui.isErrorShow)
@@ -19,7 +21,9 @@ const MainLayout = () => {
   const errorMessage = useSelector((state) => state.auth.error)
   const successMessage = useSelector((state) => state.ui.messageText)
 
-  document.body.classList.toggle('home', isHomePage)
+  useEffect(() => {
+    document.body.classList.toggle('home', isHomePage)
+  }, [isHomePage])
 
   return (
     <>

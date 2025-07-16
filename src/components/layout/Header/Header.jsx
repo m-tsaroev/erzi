@@ -4,27 +4,13 @@ import classNames from 'classnames'
 import { NavigationLink } from '@/components/ui/NavigationLink'
 import { Logo } from '@/components/ui/Logo'
 import { HeaderButton } from '@/components/ui/HeaderButton'
+import { links } from '@/config/navLinks'
+import { PATHS } from '@/config/paths'
 
 const Header = () => {
-  const links = [
-    { title: 'Profile', isLogo: false, path: '/profile', icon: 'person' },
-    { title: 'О НАС', isLogo: false, path: '/about', icon: '' },
-    { title: 'КАТАЛОГ', isLogo: false, path: '/catalog', icon: '' },
-    { title: 'Главная страница', isLogo: true, path: '/', icon: '' },
-    { title: 'УСЛУГИ', isLogo: false, path: '/services', icon: '' },
-    { title: 'КОНТАКТЫ', isLogo: false, path: '/contacts', icon: '' },
-    {
-      title: 'Cart',
-      isLogo: false,
-      path: '/cart',
-      icon: 'cart',
-      itemsCount: '',
-    },
-  ]
-
   const location = useLocation()
 
-  const isHomePage = location.pathname === '/'
+  const isHomePage = location.pathname === PATHS.HOME
 
   return (
     <header className={classNames('header', isHomePage ? 'header-home' : '')}>

@@ -4,6 +4,7 @@ import { getProducts } from '@/services/productsServices/getProducts'
 import { Link } from 'react-router-dom'
 import deffaultImg from '@/assets/images/popular-products/bottles.png'
 import { ProductCard } from '@/components/ui/ProductCard'
+import { PATHS } from '@/config/paths'
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([])
@@ -38,7 +39,7 @@ const PopularProducts = () => {
         <h3 className='popular-products__title' id={titleId}>
           ПОПУЛЯРНАЯ ПРОДУКЦИЯ
         </h3>
-        <Link to='/catalog'>перейти в каталог</Link>
+        <Link to={PATHS.CATALOG}>перейти в каталог</Link>
       </header>
       <div className='popular-products__body'>
         <ul className='popular-products__list'>
