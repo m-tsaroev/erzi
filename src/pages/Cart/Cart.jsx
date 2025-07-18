@@ -1,4 +1,5 @@
 import { PATHS } from '@/config/paths'
+import { CartSection } from '@/sections/CartSection'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -14,7 +15,9 @@ const Cart = () => {
     }
   }, [isAuth, navigation, location.pathname])
 
-  return <h1>Cart</h1>
+  return (
+    <CartSection />
+  )
 }
 
 export { Cart }

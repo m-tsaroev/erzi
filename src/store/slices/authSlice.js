@@ -76,7 +76,7 @@ const authSlice = createSlice({
       })
       .addCase(registration.rejected, (state, action) => {
         state.loading = false
-        state.error = action.payload
+        state.error = JSON.parse(action.payload).error
       })
   },
 })

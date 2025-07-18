@@ -18,7 +18,9 @@ const MainLayout = () => {
   const isLoginModalOpened = useSelector((state) => state.ui.isLoginModalOpen)
   const isErrorMessageShow = useSelector((state) => state.ui.isErrorShow)
   const isSuccessMessageShow = useSelector((state) => state.ui.isSuccessShow)
-  const errorMessage = useSelector((state) => state.auth.error)
+  const authError = useSelector((state) => state.auth.error)
+  const cartError = useSelector((state) => state.cart.error)
+  const errorMessage = authError || cartError
   const successMessage = useSelector((state) => state.ui.messageText)
 
   useEffect(() => {

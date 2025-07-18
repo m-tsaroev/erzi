@@ -31,6 +31,9 @@ const uiSlice = createSlice({
     },
     addMessageText: (state, action) => {
       state.messageText = action.payload
+    },
+    resetMessageText: (state) => {
+      state.messageText = ''
     }
   },
 })
@@ -42,7 +45,8 @@ const {
   hideErrorMessage,
   showSuccessMessage,
   hideSuccessMessage,
-  addMessageText
+  addMessageText,
+  resetMessageText
 } = uiSlice.actions
 
 export {
@@ -52,6 +56,7 @@ export {
   hideErrorMessage,
   showSuccessMessage,
   hideSuccessMessage,
-  addMessageText
+  addMessageText,
+  resetMessageText
 }
 export default uiSlice.reducer

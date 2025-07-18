@@ -9,7 +9,6 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          {/* {isAdmin && <Route path='/product-list' element={<ProductList />} />} */}
           {ROUTES.map(({ path, element }) => {
             return (
               path !== PATHS.PROFILE && path !== PATHS.CART && (

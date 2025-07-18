@@ -1,7 +1,15 @@
+// jsconfig.json
 {
   "compilerOptions": {
+    "target": "ES6",                         // минимальный уровень JS
+    "module": "ESNext",                      // говорим, что у нас — ES-модули
+    "moduleResolution": "node",              // резолвим пути как в Node
+    "allowSyntheticDefaultImports": true,    // чтобы не ругался на дефолты
+    "baseUrl": ".",                          // корень проекта (где этот файл)
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     }
-  }
+  },
+  "include": ["src"],                        // какие папки индексировать
+  "exclude": ["node_modules", "dist"]
 }

@@ -21,7 +21,7 @@ const api = async (path, options = {}) => {
     let errorMessage
 
     if (res.status === 401) {
-      errorMessage = 'Аккаунта с такими данными не существует'
+      errorMessage = 'Не авторизованы'
     } else {
       errorMessage = await res.text()
     }

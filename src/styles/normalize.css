@@ -28,8 +28,7 @@ body,
   Убираем внешние отступы вертикали нужным тегам,
   у которых есть атрибут class
  */
-:where(
-  h1,
+:where(h1,
   h2,
   h3,
   h4,
@@ -38,8 +37,7 @@ body,
   p,
   ul,
   ol,
-  dl
-):where([class]) {
+  dl):where([class]) {
   margin-block: 0;
 }
 
@@ -111,6 +109,11 @@ html {
     (когда, например, нужно будет "прижать" футер к низу сайта)
    */
   height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
 }
 
 /**
@@ -153,10 +156,8 @@ label {
   (за исключением тех, у которых уже указан
   атрибут fill со значением 'none' или начинается с 'url')
  */
-:where([fill]:not(
-  [fill="none"],
-  [fill^="url"]
-)) {
+:where([fill]:not([fill="none"],
+    [fill^="url"])) {
   fill: currentColor;
 }
 
@@ -165,10 +166,8 @@ label {
   (за исключением тех, у которых уже указан
   атрибут stroke со значением 'none')
  */
-:where([stroke]:not(
-  [stroke="none"],
-  [stroke^="url"]
-)) {
+:where([stroke]:not([stroke="none"],
+    [stroke^="url"])) {
   stroke: currentColor;
 }
 
@@ -192,6 +191,7 @@ svg * {
   которые предпочитают их не использовать
  */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
