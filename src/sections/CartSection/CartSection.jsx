@@ -13,7 +13,7 @@ const CartSection = () => {
   }, [dispatch])
 
   const {cartItems, loading, error} = useSelector((state) => state.cart)
-  
+
   return (
     <section className='cart-section cart' aria-labelledby={titleId}>
       <div className='cart__inner inner container'>
@@ -25,13 +25,6 @@ const CartSection = () => {
             {cartItems.map((cartItem) => {
               return <CartItem key={cartItem.id} {...cartItem} />
             })}
-            {/* <CartItem 
-              quantity={10}
-            product={{
-              image_url: '',
-              title: 'Lala',
-              price: 2000
-            }} /> */}
           </ul>
         </div>
       </div>

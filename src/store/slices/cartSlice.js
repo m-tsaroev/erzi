@@ -61,6 +61,42 @@ const deleteCartItem = createAsyncThunk(
   }
 )
 
+const incrementCartItem = createAsyncThunk(
+  'cart/incrementCartItem',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      return await api(`/cart/items/${credentials}/increment`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (error) {
+      return rejectWithValue(
+        error.message || 'Не удалось увеличить количество товаров в корзине'
+      )
+    }
+  }
+)
+
+const decrementCartItem = createAsyncThunk(
+  'cart/decrementCartItem',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      return await api(`/cart/items/${credentials}/decrement`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (error) {
+      return rejectWithValue(
+        error.message || 'Не удалось уменьшить количество товаров в корзине'
+      )
+    }
+  }
+)
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -117,8 +153,46 @@ const cartSlice = createSlice({
         state.error = action.payload
         console.log(action.payload, 3)
       })
+
+      // incrementCartItem
+
+      .addCase(incrementCartItem.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(incrementCartItem.fulfilled, (state) => {
+        state.loading = false
+        state.error = null
+      })
+      .addCase(incrementCartItem.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
+
+      // decrementCartItem
+
+      .addCase(decrementCartItem.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(decrementCartItem.fulfilled, (state) => {
+        state.loading = false
+        state.error = null
+      })
+      .addCase(decrementCartItem.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+
+        console.log(action);
+      })
   },
 })
 
-export { addCard, getCartItems, deleteCartItem }
+export {
+  addCard,
+  getCartItems,
+  deleteCartItem,
+  incrementCartItem,
+  decrementCartItem,
+}
 export default cartSlice.reducer
