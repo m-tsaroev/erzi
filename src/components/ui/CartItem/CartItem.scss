@@ -43,6 +43,10 @@
     align-items: center;
     justify-content: center;
 
+    svg {
+      transition-duration: var(--transition-duration);
+    }
+
     @include hover {
       background-color: var(--color-red);
       border-color: var(--color-red);

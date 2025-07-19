@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import './ProductButton.scss'
 import { useDispatch } from 'react-redux'
-import { addCard } from '@/store/slices/cartSlice'
+import { addCard, getCartItems } from '@/store/slices/cartSlice'
 import {
   addMessageText,
   hideSuccessMessage,
@@ -21,6 +21,7 @@ const ProductButton = (props) => {
     if (addCard.fulfilled.match(resultAction)) {
       dispatch(addMessageText('Товар добавлен в корзину'))
       dispatch(showSuccessMessage())
+      dispatch(getCartItems())
 
       setTimeout(() => {
         dispatch(resetMessageText())

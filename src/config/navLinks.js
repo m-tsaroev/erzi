@@ -12,7 +12,7 @@ const links = [
     isLogo: false,
     path: PATHS.CART,
     icon: 'cart',
-    itemsCount: '',
+    itemsCount: true,
   },
 ]
 
