@@ -1,0 +1,25 @@
+.cart {
+  padding-top: 100px;
+
+  &__title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--color-dark);
+
+  }
+
+  &__inner {
+    display: flex;
+    align-items: start;
+    column-gap: 100px;
+  }
+
+  &__body {
+    max-width: 733px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+}

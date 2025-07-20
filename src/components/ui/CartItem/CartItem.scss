@@ -72,6 +72,10 @@
       outline: none;
       
       &.minus {
+        &:disabled {
+          opacity: 0.5;
+        }
+
         &:before {
           @include abs-center;
           

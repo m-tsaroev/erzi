@@ -14,11 +14,12 @@ import {
 import { login, registration } from '@/store/slices/authSlice'
 import { Logo } from '../Logo'
 import { AnimatePresence, motion } from 'framer-motion'
+import { getCartItems } from '@/store/slices/cartSlice'
 
 const Form = (props) => {
   const { isRegistration } = props
 
-  const [isRegistrationForm, setisRegistrationForm] = useState(isRegistration)
+  const [isRegistrationForm, setIsRegistrationForm] = useState(isRegistration)
   const { register, handleSubmit, formState } = useForm({
     mode: 'onChange',
   })
@@ -29,7 +30,7 @@ const Form = (props) => {
   const userNameFieldError = formState.errors['username']?.message
 
   const onRegButtonClick = () => {
-    setisRegistrationForm(true)
+    setIsRegistrationForm(true)
   }
 
   const onFormLoginSubmit = async (data) => {
@@ -56,7 +57,7 @@ const Form = (props) => {
     if (registration.fulfilled.match(resultAction)) {
       dispatch(addMessageText('Вы зарегестрированы'))
       dispatch(showSuccessMessage())
-      dispatch(closeLoginModal())
+      setIsRegistrationForm(false)
       setTimeout(() => {
         dispatch(hideSuccessMessage())
       }, 2000)

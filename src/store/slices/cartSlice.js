@@ -1,10 +1,7 @@
 import { api } from '@/services/api'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux'
 
 const storageTokenKey = 'accessToken'
-
-const token = localStorage.getItem(storageTokenKey)
 
 const initialState = {
   loading: false,
@@ -16,10 +13,11 @@ const addCard = createAsyncThunk(
   'cart/addCard',
   async (credentials, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem(storageTokenKey)
       return await api(`/${credentials}/add_to_cart`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -34,9 +32,10 @@ const getCartItems = createAsyncThunk(
   'cart/getCartItems',
   async (_, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem(storageTokenKey)
       return await api('/cart/items', {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -49,10 +48,11 @@ const deleteCartItem = createAsyncThunk(
   'cart/deletCartItem',
   async (credentials, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem(storageTokenKey)
       return await api(`/cart/items/${credentials}/delete`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -65,10 +65,11 @@ const incrementCartItem = createAsyncThunk(
   'cart/incrementCartItem',
   async (credentials, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem(storageTokenKey)
       return await api(`/cart/items/${credentials}/increment`, {
         method: 'PUT',
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -83,10 +84,11 @@ const decrementCartItem = createAsyncThunk(
   'cart/decrementCartItem',
   async (credentials, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem(storageTokenKey)
       return await api(`/cart/items/${credentials}/decrement`, {
         method: 'PUT',
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       })
     } catch (error) {

@@ -34,7 +34,7 @@ const CartItem = (props) => {
     if (!incrementCartItem.fulfilled.match(actionResult)) {
       dispatch(showErrorMessage())
     } else {
-      await dispatch(getCartItems())
+    await dispatch(getCartItems())
     }
   }
 
@@ -71,6 +71,7 @@ const CartItem = (props) => {
             <button
               className='cart__item-count-button minus'
               onClick={onMinusButtonClick}
+              disabled={quantity === 1}
             ></button>
             <span className='cart__item-count-number'>{quantity}</span>
             <button

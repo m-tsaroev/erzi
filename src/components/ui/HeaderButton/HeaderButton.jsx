@@ -25,6 +25,8 @@ const HeaderButton = (props) => {
   }
 
   useEffect(() => {
+    console.log(9);
+
     if (isAuth) {
       dispatch(getCartItems())
     }
@@ -41,6 +43,10 @@ const HeaderButton = (props) => {
   cartItems.forEach((cartItem) => {
     cartItemsCount += cartItem.quantity
   })
+
+  if (!isAuth) {
+    cartItemsCount = 0
+  }
 
   return (
     <button

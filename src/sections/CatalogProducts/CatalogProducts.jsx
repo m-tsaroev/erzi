@@ -21,6 +21,7 @@ const CatalogProducts = () => {
   useEffect(() => {
     getProducts()
       .then((data) => {
+        data = data ? data : []
         setProducts(data)
         data.forEach(({ category }) => {
           setCategories((nowCategory) => [

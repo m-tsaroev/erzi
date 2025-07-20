@@ -3,6 +3,7 @@ import './CartSection.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getCartItems } from '@/store/slices/cartSlice'
+import { OrderSummary } from './components/OrderSummary'
 
 const CartSection = () => {
   const titleId = 'cart'
@@ -12,7 +13,19 @@ const CartSection = () => {
     dispatch(getCartItems())
   }, [dispatch])
 
-  const {cartItems, loading, error} = useSelector((state) => state.cart)
+  const { cartItems, loading, error } = useSelector((state) => state.cart)
+
+  const quantity = cartItems
+    ? cartItems
+        .map(({ quantity }) => quantity)
+        .reduce((number, nextNumber) => number + nextNumber, 0)
+    : 0
+
+  const summ = cartItems
+    ? cartItems
+        .map(({ product, quantity }) => product.price)
+        .reduce((price, nextPrice) => price + Math.floor(nextPrice * quantity), 0)
+    : 0
 
   return (
     <section className='cart-section cart' aria-labelledby={titleId}>
@@ -22,11 +35,13 @@ const CartSection = () => {
             Корзина
           </h1>
           <ul className='cart__items'>
-            {cartItems.map((cartItem) => {
-              return <CartItem key={cartItem.id} {...cartItem} />
-            })}
+            {cartItems &&
+              cartItems.map((cartItem) => {
+                return <CartItem key={cartItem.id} {...cartItem} />
+              })}
           </ul>
         </div>
+        <OrderSummary quantity={quantity} summ={summ} />
       </div>
     </section>
   )
