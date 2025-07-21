@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { ModalWindow } from '@/components/ui/ModalWindow'
 import Message from '@/components/ui/Message'
 import { Form } from '@/components/ui/Form'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { PATHS } from '@/config/paths'
 
@@ -27,11 +27,31 @@ const MainLayout = () => {
     document.body.classList.toggle('home', isHomePage)
   }, [isHomePage])
 
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    in: { opacity: 1, y: 0, width: '100%', height: '100%' },
+    out: { opacity: 0, y: -20 },
+  }
+  const pageTransition = { duration: 0.2, ease: 'easeInOut' }
+
   return (
     <>
       <Header />
       <main className='content'>
-        <Outlet />
+        <AnimatePresence mode='wait'>
+          {/* каждый переход даёт новый ключ = location.pathname */}
+          <motion.div
+            key={location.pathname}
+            variants={pageVariants}
+            initial='initial'
+            animate='in'
+            // exit='out'
+            transition={pageTransition}
+          >
+            {/* Тут будут все ваши страницы */}
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
       </main>
       <Footer />
       <AnimatePresence>

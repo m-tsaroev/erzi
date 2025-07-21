@@ -24,7 +24,10 @@ const CartSection = () => {
   const summ = cartItems
     ? cartItems
         .map(({ product, quantity }) => product.price)
-        .reduce((price, nextPrice) => price + Math.floor(nextPrice * quantity), 0)
+        .reduce(
+          (price, nextPrice) => price + Math.floor(nextPrice * quantity),
+          0
+        )
     : 0
 
   return (
@@ -35,10 +38,13 @@ const CartSection = () => {
             Корзина
           </h1>
           <ul className='cart__items'>
-            {cartItems &&
+            {cartItems.length !== 0 ? (
               cartItems.map((cartItem) => {
                 return <CartItem key={cartItem.id} {...cartItem} />
-              })}
+              })
+            ) : (
+              <h1>Корзина пуста</h1>
+            )}
           </ul>
         </div>
         <OrderSummary quantity={quantity} summ={summ} />
