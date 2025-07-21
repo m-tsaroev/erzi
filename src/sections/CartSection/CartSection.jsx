@@ -13,7 +13,7 @@ const CartSection = () => {
     dispatch(getCartItems())
   }, [dispatch])
 
-  const { cartItems, loading, error } = useSelector((state) => state.cart)
+  const { cartItems } = useSelector((state) => state.cart)
 
   const quantity = cartItems
     ? cartItems
@@ -23,9 +23,9 @@ const CartSection = () => {
 
   const summ = cartItems
     ? cartItems
-        .map(({ product, quantity }) => product.price)
+        .map(({ product, quantity }) => product.price * quantity)
         .reduce(
-          (price, nextPrice) => price + Math.floor(nextPrice * quantity),
+          (price, nextPrice) => price + Math.floor(nextPrice),
           0
         )
     : 0

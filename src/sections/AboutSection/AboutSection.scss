@@ -1,0 +1,59 @@
+.about {
+  background: url(../../assets/images/about/bg.png) 50% / cover;
+  background-repeat: no-repeat;
+  padding-top: 40px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'AKONY', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: var(--color-dark);
+  }
+
+  &__watemark {
+    font-family: 'AKONY', sans-serif;
+    font-weight: 700;
+    font-size: 256px;
+    color: var(--color-dark);
+    mix-blend-mode: soft-light;
+    padding-bottom: 120px;
+  }
+
+  &__info {
+    &-block {
+      background-color: #00000030;
+      backdrop-filter: blur(20px);
+      padding: 20px;
+      border-radius: 10px;
+
+      &--left {
+        clip-path: polygon(
+    40px 0%,     /* точка начала скоса сверху */
+    100%   0%,   /* правый верхний */
+    100% 100%,   /* правый нижний */
+    0%   100%,   /* левый нижний */
+    0%    20px,  /* точка скоса снизу слева */
+    40px  20px   /* возвращаемся к скосу наверху */
+  );
+      }
+    }
+
+    &-title {
+      font-family: 'AKONY', sans-serif;
+      color: var(--color-light);
+    }
+
+    &-description {
+      font-family: 'DIN', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-light-10);
+    }
+  }
+}

@@ -1,5 +1,9 @@
+import { AboutSection } from "@/sections/AboutSection"
+
 const About = () => {
-  return <h1>About</h1>
+  return (
+    <AboutSection />
+  )
 }
 
 export { About }
