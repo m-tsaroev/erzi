@@ -5,6 +5,7 @@ import InlineSVG from 'react-inlinesvg'
 import { ProductCard } from '@/components/ui/ProductCard'
 import deffaultImg from '@/assets/images/popular-products/bottles.png'
 import { FilterChip } from '@/components/ui/FilterChip'
+import { jwtDecode } from 'jwt-decode'
 
 const CatalogProducts = () => {
   const storageKey = 'productCategories'
