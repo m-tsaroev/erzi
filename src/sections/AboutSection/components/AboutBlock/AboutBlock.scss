@@ -1,0 +1,45 @@
+.about__block {
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 823px;
+
+  &--left {
+    .about__block-title {
+      text-align: left;
+    }
+  }
+
+  &--right {
+    .about__block-title {
+      text-align: right;
+    }
+  }
+
+  svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+  &-title {
+    position: relative;
+    font-family: 'AKONY', sans-serif;
+    color: var(--color-light);
+    font-size: 24px;
+    padding-bottom: 24px;
+    z-index: 1;
+    text-align: left;
+  }
+
+  &-description {
+    position: relative;
+    font-family: 'DIN', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--color-light-10);
+    line-height: 1.3;
+    z-index: 1;
+  }
+}
