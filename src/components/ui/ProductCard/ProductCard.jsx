@@ -12,19 +12,14 @@ const ProductCard = (props) => {
     price,
     quantity,
     className,
-    modeButton = ''
+    modeButton = '',
   } = props
 
   return (
     <li className={classNames('product-card__item', className)}>
       <div className='product-card__item__body'>
         <div className='product-card__item-image'>
-          <img
-            src={image_url}
-            alt=''
-            width={232}
-            height={188}
-          />
+          <img src={image_url} alt='' width={232} height={188} />
         </div>
         <div className='product-card__item-price'>
           <span>{formatPrice(price)} ₽</span>

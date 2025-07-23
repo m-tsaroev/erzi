@@ -14,7 +14,6 @@ import {
 import { login, registration } from '@/store/slices/authSlice'
 import { Logo } from '../Logo'
 import { AnimatePresence, motion } from 'framer-motion'
-import { getCartItems } from '@/store/slices/cartSlice'
 
 const Form = (props) => {
   const { isRegistration } = props
@@ -28,6 +27,10 @@ const Form = (props) => {
   const emailFieldError = formState.errors['email']?.message
   const passwordFieldError = formState.errors['password']?.message
   const userNameFieldError = formState.errors['username']?.message
+
+  const usernameRegex = /^[A-Za-zА-Яа-яЁё][A-Za-zА-Яа-яЁё0-9_-]{2,29}$/
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+  const passwordRegex = /^.{6,}$/
 
   const onRegButtonClick = () => {
     setIsRegistrationForm(true)
@@ -95,8 +98,8 @@ const Form = (props) => {
               {...register('username', {
                 required: 'Не валидный username',
                 pattern: {
-                  value: /^.{3,30}$/,
-                  message: 'Ведите от 3 до 30 символов',
+                  value: usernameRegex,
+                  message: 'Ведите от 3 до 30 символов. Имя может начинаться только от с букв, цифр, и знаков "_" "-"',
                 },
               })}
             />
@@ -132,7 +135,7 @@ const Form = (props) => {
               {...register('email', {
                 required: 'Не валидный Email',
                 pattern: {
-                  value: /^.{6,}$/,
+                  value: emailRegex,
                   message: 'Не валидный Email',
                 },
               })}
@@ -169,7 +172,7 @@ const Form = (props) => {
               {...register('password', {
                 required: 'Не валидный Пароль',
                 pattern: {
-                  value: /^.{6,}$/,
+                  value: passwordRegex,
                   message: 'Символов должно быть не меньше 6',
                 },
               })}
@@ -209,7 +212,7 @@ const Form = (props) => {
               {...register('email', {
                 required: 'Не валидный Email',
                 pattern: {
-                  value: /^.{6,}$/,
+                  value: emailRegex,
                   message: 'Не валидный Email',
                 },
               })}
@@ -246,7 +249,7 @@ const Form = (props) => {
               {...register('password', {
                 required: 'Не валидный Пароль',
                 pattern: {
-                  value: /^.{6,}$/,
+                  value: passwordRegex,
                   message: 'Символов должно быть не меньше 6',
                 },
               })}

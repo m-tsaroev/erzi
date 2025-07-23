@@ -5,7 +5,7 @@ import './HeaderButton.scss'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { openLoginModal } from '@/store/slices/uiSlice'
-import { addCard, getCartItems } from '@/store/slices/cartSlice'
+import { getCartItems } from '@/store/slices/cartSlice'
 
 const HeaderButton = (props) => {
   const { title, to, className, icon, itemsCount } = props
@@ -25,8 +25,6 @@ const HeaderButton = (props) => {
   }
 
   useEffect(() => {
-    console.log(9);
-
     if (isAuth) {
       dispatch(getCartItems())
     }
