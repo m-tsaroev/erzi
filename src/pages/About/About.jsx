@@ -1,24 +1,13 @@
+import { AboutSection } from '@/sections/AboutSection'
+import { Water } from '@/sections/Water'
+
 const About = () => {
   return (
-  <>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  <h1>About</h1>
-  </>)
+    <>
+      <AboutSection />
+      <Water />
+    </>
+  )
 }
 
 export { About }

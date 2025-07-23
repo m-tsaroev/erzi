@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getCartItems } from '@/store/slices/cartSlice'
 import { OrderSummary } from './components/OrderSummary'
-import { round2 } from '@/utils/round2'
 
 const CartSection = () => {
   const titleId = 'cart'
@@ -25,7 +24,10 @@ const CartSection = () => {
   const summ = cartItems
     ? cartItems
         .map(({ product, quantity }) => product.price * quantity)
-        .reduce((price, nextPrice) => price + nextPrice, 0)
+        .reduce(
+          (price, nextPrice) => price + Math.floor(nextPrice),
+          0
+        )
     : 0
 
   return (
@@ -45,7 +47,7 @@ const CartSection = () => {
             )}
           </ul>
         </div>
-        <OrderSummary quantity={quantity} summ={round2(summ)} />
+        <OrderSummary quantity={quantity} summ={summ} />
       </div>
     </section>
   )
