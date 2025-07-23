@@ -1,12 +1,8 @@
-import InlineSVG from 'react-inlinesvg'
 import './AboutSection.scss'
-import icon from '../../assets/images/about/subtract-1.svg'
 import { AboutBlock } from './components/AboutBlock'
 
 const AboutSection = () => {
   const titleId = 'About-section'
-
-  const iconSvg = <InlineSVG src={icon} />
 
   const aboutBlocksInfo = [
     {
