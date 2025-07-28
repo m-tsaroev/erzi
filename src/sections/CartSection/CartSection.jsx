@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getCartItems } from '@/store/slices/cartSlice'
 import { OrderSummary } from './components/OrderSummary'
+import { DeleteAllButton } from './components/DeleteAllButton'
+import { round2 } from '@/utils/round2'
 
 const CartSection = () => {
   const titleId = 'cart'
@@ -24,19 +26,20 @@ const CartSection = () => {
   const summ = cartItems
     ? cartItems
         .map(({ product, quantity }) => product.price * quantity)
-        .reduce(
-          (price, nextPrice) => price + Math.floor(nextPrice),
-          0
-        )
+        .reduce((price, nextPrice) => price + round2(nextPrice), 0)
     : 0
 
   return (
     <section className='cart-section cart' aria-labelledby={titleId}>
       <div className='cart__inner inner container'>
         <div className='cart__body'>
-          <h1 className='cart__title' id={titleId}>
-            Корзина
-          </h1>
+          <header className='cart__header'>
+            <h1 className='cart__title' id={titleId}>
+              Корзина
+            </h1>
+            <DeleteAllButton />
+          </header>
+
           <ul className='cart__items'>
             {cartItems.length !== 0 ? (
               cartItems.map((cartItem) => {
