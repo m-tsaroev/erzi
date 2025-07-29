@@ -8,7 +8,7 @@ const registrationFields = [
     isRequired: true,
     requiredText: 'Не валидный username',
     requiredMessage:
-      'Ведите от 3 до 30 символов. Имя может начинаться только с букв, цифр, и знаков "_" "-"',
+      'Ведите от 3 до 30 символов. Имя может начинаться только с букв и цифр',
     requiredRegex: /^[A-Za-zА-Яа-яЁё][A-Za-zА-Яа-яЁё0-9_-]{2,29}$/,
   },
   {

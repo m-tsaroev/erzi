@@ -63,7 +63,7 @@ const MainLayout = () => {
       </AnimatePresence>
       <Message
         show={isErrorMessageShow || isSuccessMessageShow}
-        message={errorMessage ? errorMessage : successMessage}
+        message={(errorMessage && isErrorMessageShow) ? errorMessage : successMessage}
         mode={isErrorMessageShow ? 'error' : 'success'}
       />
     </>

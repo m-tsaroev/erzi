@@ -18,4 +18,10 @@
   &__required-message {
     transition-duration: var(--transition-duration);
   }
+
+  &__item {
+    p {
+      max-width: 80%;
+    }
+  }
 }
