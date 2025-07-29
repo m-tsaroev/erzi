@@ -3,10 +3,24 @@ import { Logo } from '../Logo'
 import classNames from 'classnames'
 
 const Form = (props) => {
-  const { onSubmit, children, isRegistrationForm, className } = props
+  const {
+    onSubmit,
+    children,
+    isRegistrationForm,
+    className,
+    /**
+     * '' (default) | 'white' | 'light-blur'
+     */
+    mode,
+  } = props
 
   return (
-    <form className={classNames('form', className)} onSubmit={onSubmit}>
+    <form
+      className={classNames('form', className, {
+        [`form--${mode}`]: mode,
+      })}
+      onSubmit={onSubmit}
+    >
       <Logo className='form__logo' />
       <h3 className='form__title'>
         {isRegistrationForm ? 'Создание аккаунта' : 'Добро пожаловать!'}
