@@ -1,0 +1,21 @@
+.field {
+  padding: 16px 20px;
+  border: 1px solid var(--color-light);
+  color: var(--color-light);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  background: transparent;
+  border-radius: 20px;
+  width: 400px;
+  transition-duration: var(--transition-duration);
+
+  &--error {
+    border-color: var(--color-red);
+    color: var(--color-red);
+  }
+
+  &__required-message {
+    transition-duration: var(--transition-duration);
+  }
+}
