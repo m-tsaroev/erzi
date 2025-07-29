@@ -1,0 +1,33 @@
+.button {
+  width: 100%;
+  padding: 13px 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-light);
+  background: transparent;
+  border: 1px solid var(--color-light);
+  border-radius: 20px;
+  transition-duration: var(--transition-duration);
+
+  @include hover {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-light);
+  }
+
+  &--blue {
+    background-color: var(--color-accent-blue);
+    border-color: var(--color-accent-blue);
+  }
+
+  &--black {
+    background-color: var(--color-dark);
+    border-color: var(--color-dark);
+  }
+
+  &--white {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+  }
+}

@@ -1,0 +1,42 @@
+.auth {
+  position: relative;
+
+  &__fields {
+    display: grid;
+    row-gap: 5px;
+  }
+
+  &__buttons {
+    display: grid;
+    row-gap: 5px;
+    width: 100%;
+  }
+
+  &__close-button {
+    @include square(44px);
+    @include flex-center;
+
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      border-radius: 20px;
+      background-color: var(--color-light);
+    }
+
+    &::before {
+      rotate: 45deg;
+    }
+
+    &::after {
+      rotate: 135deg;
+    } 
+  }
+}

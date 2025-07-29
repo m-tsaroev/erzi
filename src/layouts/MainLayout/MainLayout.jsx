@@ -5,10 +5,10 @@ import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ModalWindow } from '@/components/ui/ModalWindow'
 import Message from '@/components/ui/Message'
-import { Form } from '@/components/ui/Form'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { PATHS } from '@/config/paths'
+import { AuthForm } from '@/components/ui/AuthForm'
 
 const MainLayout = () => {
   const location = useLocation()
@@ -57,13 +57,13 @@ const MainLayout = () => {
       <AnimatePresence>
         {isLoginModalOpened && (
           <ModalWindow>
-            <Form />
+            <AuthForm />
           </ModalWindow>
         )}
       </AnimatePresence>
       <Message
         show={isErrorMessageShow || isSuccessMessageShow}
-        message={errorMessage ? errorMessage : successMessage}
+        message={(errorMessage && isErrorMessageShow) ? errorMessage : successMessage}
         mode={isErrorMessageShow ? 'error' : 'success'}
       />
     </>

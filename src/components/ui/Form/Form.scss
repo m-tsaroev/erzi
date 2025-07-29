@@ -2,13 +2,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 20px;
+  row-gap: 15px;
   border: 2px solid var(--color-light);
   border-radius: 20px;
-  height: 570px;
-  padding: 0 24px;
+  min-height: 570px;
+  padding: 56px 24px;
   padding-top: 55px;
   z-index: 200;
+
+  &--white {
+    background-color: var(--color-light);
+  }
+
+  &--light-blur {
+    border: none;
+    background-color: var(--color-light-20op);
+    backdrop-filter: blur(20px);
+  }
 
   &__logo {
     img {
@@ -22,59 +32,4 @@
     font-weight: 600;
     color: var(--color-light);
   }
-
-  &__fields {
-    display: grid;
-    row-gap: 12px;
-  }
-
-  &__field {
-    padding: 16px 20px;
-    border: 1px solid var(--color-light);
-    color: var(--color-light);
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    background: transparent;
-    border-radius: 20px;
-    width: 400px;
-    transition-duration: var(--transition-duration);
-
-    &--error {
-      border-color: var(--color-red);
-      color: var(--color-red);
-    }
-
-    &__required-message {
-      transition-duration: var(--transition-duration);
-    }
-  }
-
-  &__button {
-    width: 100%;
-    padding: 13px 20px;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--color-light);
-    background: transparent;
-    border: 1px solid var(--color-light);
-    border-radius: 20px;
-    transition-duration: var(--transition-duration);
-
-    @include hover {
-      background-color: var(--color-blue);
-      border-color: var(--color-blue);
-    }
-  }
-
-  &__submit {
-    background-color: var(--color-accent-blue);
-    border-color: var(--color-accent-blue);
-  }
-}
-
-.field {
-  display: grid;
-  row-gap: 5px;
 }
