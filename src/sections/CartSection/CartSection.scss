@@ -1,5 +1,6 @@
 .cart {
   padding-top: 100px;
+  padding-bottom: 75px;
 
   &__header {
     display: flex;
@@ -13,6 +14,11 @@
     font-size: 24px;
     color: var(--color-dark);
 
+  }
+
+  &__items {
+    display: grid;
+    row-gap: 20px;
   }
 
   &__inner {
