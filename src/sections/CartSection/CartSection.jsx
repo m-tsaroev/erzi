@@ -17,6 +17,10 @@ const CartSection = () => {
 
   const { cartItems } = useSelector((state) => state.cart)
 
+  const sorteredCartItems = [...cartItems].sort((a, b) =>
+    a.product.title.localeCompare(b.product.title, 'ru')
+  )
+
   const quantity = cartItems
     ? cartItems
         .map(({ quantity }) => quantity)
@@ -41,10 +45,14 @@ const CartSection = () => {
           </header>
 
           <ul className='cart__items'>
-            {cartItems.length !== 0 ? (
-              cartItems.map((cartItem) => {
-                return <CartItem key={cartItem.id} {...cartItem} />
-              })
+            {sorteredCartItems.length !== 0 ? (
+              sorteredCartItems
+                .sort((a, b) =>
+                  a.product.title.localeCompare(b.product.title, 'ru')
+                )
+                .map((cartItem) => {
+                  return <CartItem key={cartItem.id} {...cartItem} />
+                })
             ) : (
               <h1>Корзина пуста</h1>
             )}
