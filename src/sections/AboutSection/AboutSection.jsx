@@ -1,3 +1,4 @@
+import { Watemark } from '@/components/ui/Watemark'
 import './AboutSection.scss'
 import { AboutBlock } from './components/AboutBlock'
 
@@ -37,7 +38,7 @@ const AboutSection = () => {
     <section className='about-section about' aria-labelledby={titleId}>
       <div className='about__inner inner container'>
         <h1 className='about__title'>немного о нас</h1>
-        <div className='about__watemark'>erzi</div>
+        <Watemark />
         <div className='about__body'>
           {aboutBlocksInfo.map((aboutBlock, index) => (
             <AboutBlock {...aboutBlock} key={index} />

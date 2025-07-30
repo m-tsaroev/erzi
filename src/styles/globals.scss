@@ -22,7 +22,7 @@ body {
 
   &.home {
     background: var(--color-alt-blue);
-    background: url(../assets/images/home-page/bg.jpg) -1293px -464px / 4513px 2989px;
+    background: url(../assets/images/home-page/bg.jpg) 50% 5% / 100%;
     background-repeat: no-repeat;
   }
 }

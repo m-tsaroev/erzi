@@ -1,3 +1,4 @@
+import { Watemark } from '@/components/ui/Watemark'
 import './Hero.scss'
 
 const Hero = () => {
@@ -5,8 +6,9 @@ const Hero = () => {
 
   return (
     <section className='hero hero-section' aria-labelledby={titleId}>
-      <div className='hero__inner'>
-        <div className='hero__body container'>
+      <div className='hero__inner container'>
+        <Watemark />
+        <div className='hero__body '>
           <h2 className='hero__title' id={titleId}>
             Почувствуй молодость на вкус
           </h2>

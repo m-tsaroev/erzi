@@ -18,15 +18,6 @@
     color: var(--color-dark);
   }
 
-  &__watemark {
-    font-family: 'AKONY', sans-serif;
-    font-weight: 700;
-    font-size: 256px;
-    color: var(--color-dark);
-    mix-blend-mode: soft-light;
-    padding-bottom: 120px;
-  }
-
   &__body {
     display: flex;
     flex-direction: column;
