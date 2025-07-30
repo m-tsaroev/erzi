@@ -31,7 +31,7 @@ const Header = () => {
                     <NavigationLink
                       title={title.toLowerCase()}
                       to={path}
-                      className='header__menu-link header__link'
+                      className='header__menu-link'
                     >
                       {title}
                     </NavigationLink>
