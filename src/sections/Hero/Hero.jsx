@@ -12,7 +12,6 @@ const Hero = () => {
           <h2 className='hero__title' id={titleId}>
             Почувствуй молодость на вкус
           </h2>
-          <button className='hero__button'>Подробнее о продукции</button>
         </div>
       </div>
     </section>

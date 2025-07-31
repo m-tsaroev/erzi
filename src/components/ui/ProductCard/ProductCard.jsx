@@ -12,6 +12,7 @@ const ProductCard = (props) => {
     price,
     quantity,
     className,
+    isHomePage,
     modeButton = '',
   } = props
 
@@ -31,7 +32,7 @@ const ProductCard = (props) => {
             <p>{description}</p>
           </div>
         </div>
-        <ProductButton mode={modeButton} id={id} />
+        {!isHomePage && <ProductButton mode={modeButton} id={id} />}
       </div>
     </li>
   )

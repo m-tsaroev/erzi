@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import './PopularProducts.scss'
 import { getProducts } from '@/services/productsServices/getProducts'
-import { Link } from 'react-router-dom'
 import deffaultImg from '@/assets/images/popular-products/bottles.png'
 import { ProductCard } from '@/components/ui/ProductCard'
 import { PATHS } from '@/config/paths'
+import { NavigationLink } from '@/components/ui/NavigationLink'
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([])
@@ -39,7 +39,6 @@ const PopularProducts = () => {
         <h3 className='popular-products__title' id={titleId}>
           ПОПУЛЯРНАЯ ПРОДУКЦИЯ
         </h3>
-        <Link to={PATHS.CATALOG}>перейти в каталог</Link>
       </header>
       <div className='popular-products__body'>
         <ul className='popular-products__list'>
@@ -49,7 +48,7 @@ const PopularProducts = () => {
                 { id, title, description, price, image_url, quantity },
                 index
               ) => {
-                if (index >= 4) return
+                if (index >= 3) return
 
                 return (
                   <ProductCard
@@ -60,6 +59,7 @@ const PopularProducts = () => {
                     image_url={image_url ? image_url : deffaultImg}
                     quantity={quantity}
                     className='popular-products__item'
+                    isHomePage
                   />
                 )
               }
@@ -68,6 +68,15 @@ const PopularProducts = () => {
             <h1>Нет продуктов</h1>
           )}
         </ul>
+        <div className='popular-products__overlay'>
+          <NavigationLink
+            className='popular-products__overlay-link'
+            to={PATHS.CATALOG}
+            title='Catalog'
+          >
+            Перейти в каталог
+          </NavigationLink>
+        </div>
       </div>
     </section>
   )

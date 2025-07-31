@@ -19,17 +19,7 @@
     text-shadow: var(--text-shadow);
     font-size: 80px;
     font-weight: 400;
-    max-width: 340px;
+    max-width: 580px;
     line-height: 1;
-  }
-
-  &__button {
-    font-size: 15px;
-    padding: 12px 24px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    border-radius: 100px;
-    border: none;
-    box-shadow: var(--shadow) inset, var(--shadow);
   }
 }
