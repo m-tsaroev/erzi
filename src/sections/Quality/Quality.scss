@@ -1,0 +1,74 @@
+.quality {
+  padding: 135px 0;
+  background: var(--color-dark-10op);
+  backdrop-filter: blur(30px);
+  text-align: center;
+
+  &__inner {
+    display: grid;
+    row-gap: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-shadow: var(--shadow);
+    color: var(--color-light-sky-blue);
+  }
+
+  &__description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: var(--shadow);
+    color: var(--color-dusty-sky);
+    max-width: 650px;
+  }
+
+  &__info {
+    &-list {
+      display: grid;
+      row-gap: 50px;
+      text-align: left;
+      padding-left: 90px;
+    }
+
+    &-item {
+      display: grid;
+      row-gap: 14px;
+      position: relative;
+      max-width: 650px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -90px;
+        width: 55px;
+        height: 55px;
+        background: url('/info-mark.svg') center/cover no-repeat;
+        filter: drop-shadow(var(--shadow));
+      }
+
+      &-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--color-light-sky-blue);
+        text-shadow: var(--shadow);
+      }
+
+      &-description {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-dusty-sky);
+        text-shadow: var(--shadow);
+      }
+    }
+  }
+}
