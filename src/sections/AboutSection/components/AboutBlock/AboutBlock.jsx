@@ -16,17 +16,12 @@ const AboutBlock = (props) => {
     className,
   } = props
 
-  const substructSVG = (
-    <InlineSVG src={direction === 'left' ? substruc1 : substruc2} />
-  )
-
   return (
     <div
       className={classNames('about__block', className, {
         [`about__block--${direction}`]: direction,
       })}
     >
-      {substructSVG}
       <h2 className='about__block-title'>{title}</h2>
       <div className='about__block-description'>
         <p>
