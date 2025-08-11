@@ -1,0 +1,72 @@
+.contacts {
+  background: url('@/assets/images/contacts/bg.jpg') 50% 0 / cover no-repeat;
+  padding-top: 62px;
+  padding-bottom: 30px;
+
+  &__inner {
+    --container-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 23px;
+  }
+
+  &__title {
+    font-family: 'AKONY', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    column-gap: 120px;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 570px;
+
+    &-numbers {
+      background-color: var(--color-light-20op);
+      backdrop-filter: blur(20px);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+      padding: 30px;
+
+      span {
+        font-family: 'AKONY', sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+      }
+    }
+
+    &-mail {
+      font-family: 'AKONY', sans-serif;
+      font-size: 24px;
+      font-weight: 700px;
+      color: var(--color-light);
+    }
+  }
+
+  &__form {
+    &-fields {
+      display: grid;
+      row-gap: 10px;
+    }
+
+    &-field {
+      &::placeholder {
+        color: var(--color-light);
+      }
+
+      &-textarea {
+        height: 140px;
+      }
+    }
+  }
+}

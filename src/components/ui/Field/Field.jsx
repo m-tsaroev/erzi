@@ -14,34 +14,51 @@ const Field = (props) => {
     requiredText,
     requiredMessage,
     requiredRegex,
+    onChange,
+    symbolCount,
+    maxSymbolCount,
   } = props
 
-  const { register, formState:{errors} } = useFormContext()
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
+
+  const {
+    ref,
+    onChange: rhfOnChange,
+    name: rhfName,
+    ...rest
+  } = register(name, {
+    required: requiredText,
+    pattern: requiredRegex
+      ? { value: requiredRegex, message: requiredMessage }
+      : undefined,
+  })
 
   const fieldError = errors[type]?.message
 
-  const Component = type === 'textarea' ? type : 'input'
+  const isTextarea = type === 'textarea'
+
+  const Component = isTextarea ? type : 'input'
 
   return (
     <div className='field__item'>
       <Component
-        type={type}
-        name={name}
+        {...rest}
+        ref={ref}
+        name={rhfName}
+        {...(!isTextarea ? { type } : {})}
         autoComplete={autoComplete}
         placeholder={placeholder}
         className={classNames('field', className, {
           'field--error': fieldError,
         })}
-        {...register(
-          type,
-          {
-            required: requiredText,
-            pattern: {
-              value: requiredRegex,
-              message: requiredMessage,
-            },
-          }
-        )}
+        maxLength={maxSymbolCount}
+        onChange={(e) => {
+          rhfOnChange(e)
+          onChange?.(e)
+        }}
       />
       {isRequired && (
         <AnimatePresence>
@@ -63,6 +80,11 @@ const Field = (props) => {
             </motion.div>
           )}
         </AnimatePresence>
+      )}
+      {maxSymbolCount && (
+        <div className='textarea-max-symbol-count'>
+          {symbolCount}/{maxSymbolCount}
+        </div>
       )}
     </div>
   )

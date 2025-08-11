@@ -12,18 +12,21 @@ const Form = (props) => {
      * '' (default) | 'white' | 'light-blur'
      */
     mode,
+    title,
+    isModal=true
   } = props
 
   return (
     <form
       className={classNames('form', className, {
         [`form--${mode}`]: mode,
+        'is-modal': isModal
       })}
       onSubmit={onSubmit}
     >
       <Logo className='form__logo' />
       <h3 className='form__title'>
-        {isRegistrationForm ? 'Создание аккаунта' : 'Добро пожаловать!'}
+        {isRegistrationForm ? 'Создание аккаунта' : title ? title : 'Добро пожаловать'}
       </h3>
       {children}
     </form>

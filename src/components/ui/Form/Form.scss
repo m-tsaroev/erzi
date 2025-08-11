@@ -8,7 +8,10 @@
   min-height: 570px;
   padding: 56px 24px;
   padding-top: 55px;
-  z-index: 200;
+
+  &.is-modal {
+    z-index: 200;
+  }
 
   &--white {
     background-color: var(--color-light);

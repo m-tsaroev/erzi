@@ -9,6 +9,7 @@
   border-radius: 20px;
   width: 400px;
   transition-duration: var(--transition-duration);
+  resize: none;
 
   &--error {
     border-color: var(--color-red);
@@ -20,8 +21,19 @@
   }
 
   &__item {
+    position: relative;
+
     p {
       max-width: 80%;
+    }
+
+    .textarea-max-symbol-count {
+      position: absolute;
+      right: 20px;
+      bottom: 5px;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: var(--color-light);
+      font-size: 14px;
     }
   }
 }

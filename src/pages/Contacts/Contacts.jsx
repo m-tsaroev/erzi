@@ -1,5 +1,7 @@
+import { ContactsSection } from "@/sections/ContactsSection"
+
 const Contacts = () => {
-  return <h1>Contacts</h1>
+  return <ContactsSection />
 }
 
 export { Contacts }
