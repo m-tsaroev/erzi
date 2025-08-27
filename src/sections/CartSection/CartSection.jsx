@@ -96,7 +96,11 @@ const CartSection = () => {
             )}
           </ul>
         </div>
-        <OrderSummary discount={discount} quantity={quantity} summ={summ} />
+        <OrderSummary
+          discount={round2(discount)}
+          quantity={quantity}
+          summ={round2(summ)}
+        />
       </div>
     </section>
   );
