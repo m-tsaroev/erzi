@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { OrderSummaryRow } from "../OrderSummaryRow";
 import "./OrderSummary.scss";
 
@@ -12,7 +11,7 @@ const OrderSummary = (props) => {
         {rows.map(({ name, value, show, mode }) => {
           return show ? (
             <OrderSummaryRow
-              className={classNames("order-summary__row")}
+              className="order-summary__row"
               name={name}
               value={value}
               mode={mode}

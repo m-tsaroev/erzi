@@ -80,9 +80,6 @@ const CartSection = () => {
           </ul>
         </div>
         <OrderSummary
-          discount={round2(discount)}
-          quantity={quantity}
-          summ={round2(summ)}
           rows={[
             {
               name: "Товары:",

@@ -2,7 +2,15 @@ import classNames from "classnames";
 import "./OrderSummaryRow.scss";
 
 const OrderSummaryRow = (props) => {
-  const { name, value, className, mode } = props;
+  const {
+    name,
+    value,
+    className,
+
+    // '' (default) | 'bordered' | 'green'
+
+    mode,
+  } = props;
 
   return (
     <div
