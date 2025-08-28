@@ -9,6 +9,7 @@ import { Form } from '@/components/ui/Form'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { PATHS } from '@/config/paths'
+import { ResetCartButton } from '@/components/ui/ResetCartButton'
 
 const MainLayout = () => {
   const location = useLocation()
@@ -22,14 +23,21 @@ const MainLayout = () => {
   const cartError = useSelector((state) => state.cart.error)
   const errorMessage = authError || cartError
   const successMessage = useSelector((state) => state.ui.messageText)
+  const isShowRestoreCartItemsButton = useSelector(
+    (state) => state.ui.isShowRestoreCartButton
+  )
 
   useEffect(() => {
     document.body.classList.toggle('home', isHomePage)
   }, [isHomePage])
 
+  useEffect(() => {
+    console.log(isShowRestoreCartItemsButton)
+  }, [isShowRestoreCartItemsButton])
+
   const pageVariants = {
     initial: { opacity: 0, y: -20 },
-    in: { opacity: 1, y: 0, },
+    in: { opacity: 1, y: 0 },
     out: { opacity: 0, y: 20 },
   }
   const pageTransition = { duration: 0.2, ease: 'easeInOut' }
@@ -65,6 +73,11 @@ const MainLayout = () => {
         show={isErrorMessageShow || isSuccessMessageShow}
         message={errorMessage ? errorMessage : successMessage}
         mode={isErrorMessageShow ? 'error' : 'success'}
+      />
+      <Message
+        show={isShowRestoreCartItemsButton}
+        message={<ResetCartButton />}
+        duration={10000}
       />
     </>
   )

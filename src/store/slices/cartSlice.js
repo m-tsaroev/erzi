@@ -118,6 +118,22 @@ const deleteAll = createAsyncThunk(
   }
 )
 
+const restoreCartItems = createAsyncThunk(
+  'cart/restoreCartItems',
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem(storageTokenKey)
+      return await api('/cart/restore', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -216,8 +232,6 @@ const cartSlice = createSlice({
       .addCase(deleteAll.fulfilled, (state) => {
         state.loading = true
         state.error = null
-
-        console.log(5)
       })
       .addCase(deleteAll.rejected, (state, action) => {
         state.loading = false
@@ -230,10 +244,11 @@ const cartSlice = createSlice({
 
 export {
   addCard,
-  getCartItems,
-  deleteCartItem,
-  incrementCartItem,
   decrementCartItem,
   deleteAll,
+  deleteCartItem,
+  getCartItems,
+  incrementCartItem,
+  restoreCartItems,
 }
 export default cartSlice.reducer

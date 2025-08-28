@@ -3,6 +3,10 @@ import classNames from 'classnames'
 import './DeleteAllButton.scss'
 import { useDispatch } from 'react-redux'
 import { deleteAll, getCartItems } from '@/store/slices/cartSlice'
+import {
+  showRestoreCartButton,
+  hideRestoreCartButton,
+} from '@/store/slices/uiSlice'
 
 const DeleteAllButton = (props) => {
   const { className } = props
@@ -12,12 +16,16 @@ const DeleteAllButton = (props) => {
     const resultAction = await dispatch(deleteAll())
 
     if (deleteAll.fulfilled.match(resultAction)) {
-      console.log(1);
+      console.log(1)
       await dispatch(getCartItems())
+      dispatch(showRestoreCartButton())
+      setTimeout(() => {
+        dispatch(hideRestoreCartButton())
+      }, 10000)
     } else {
-      console.log(2);
+      console.log(2)
     }
-    console.log(8);
+    console.log(8)
   }
 
   return (

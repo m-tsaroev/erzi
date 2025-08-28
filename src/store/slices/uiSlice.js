@@ -6,6 +6,7 @@ const uiSlice = createSlice({
     isLoginModalOpen: false,
     isErrorShow: false,
     isSuccessShow: false,
+    isShowRestoreCartButton: false,
     messageText: '',
   },
   reducers: {
@@ -34,7 +35,17 @@ const uiSlice = createSlice({
     },
     resetMessageText: (state) => {
       state.messageText = ''
-    }
+    },
+    showRestoreCartButton: (state) => {
+      console.log(201)
+
+      state.isShowRestoreCartButton = true
+
+      console.log(state.isShowRestoreCartButton)
+    },
+    hideRestoreCartButton: (state) => {
+      state.isShowRestoreCartButton = false
+    },
   },
 })
 
@@ -46,7 +57,9 @@ const {
   showSuccessMessage,
   hideSuccessMessage,
   addMessageText,
-  resetMessageText
+  resetMessageText,
+  showRestoreCartButton,
+  hideRestoreCartButton
 } = uiSlice.actions
 
 export {
@@ -57,6 +70,8 @@ export {
   showSuccessMessage,
   hideSuccessMessage,
   addMessageText,
-  resetMessageText
+  resetMessageText,
+  showRestoreCartButton,
+  hideRestoreCartButton
 }
 export default uiSlice.reducer

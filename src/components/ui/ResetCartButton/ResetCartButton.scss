@@ -1,0 +1,13 @@
+.reset-cart-button {
+  width: 150px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-m);
+  transition-duration: var(--transition-duration-longer);
+  color: var(--color-light);
+
+  @include hover {
+    background-color: var(--color-light-40op);
+  }
+}
