@@ -33,7 +33,8 @@ const CartSection = () => {
         (acc, { product, quantity }) => {
           const isBulkDiscountQuantity =
             product.bulk_discount_quantity !== 0 &&
-            quantity >= product.bulk_discount_quantity;
+            quantity >= product.bulk_discount_quantity &&
+            product.bulk_discount_price !== 0;
 
           if (isBulkDiscountQuantity) {
             acc.summ += round2(product.bulk_discount_price * quantity);
