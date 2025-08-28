@@ -1,7 +1,8 @@
 import { CartItem } from "@/components/ui/CartItem";
 import { getCartItems } from "@/store/slices/cartSlice";
+import { formatPrice } from "@/utils/formatPrice";
 import { round2 } from "@/utils/round2";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./CartSection.scss";
 import { DeleteAllButton } from "./components/DeleteAllButton";
@@ -10,8 +11,6 @@ import { OrderSummary } from "./components/OrderSummary";
 const CartSection = () => {
   const titleId = "cart";
   const dispatch = useDispatch();
-
-  const [showDiscount, setShowDiscount] = useState(false);
 
   useEffect(() => {
     dispatch(getCartItems());
@@ -28,26 +27,6 @@ const CartSection = () => {
         .map(({ quantity }) => quantity)
         .reduce((number, nextNumber) => number + nextNumber, 0)
     : 0;
-
-  // const summ = cartItems
-  //   ? cartItems
-  //       .map(({ product, quantity }) => {
-  //         const isDiscount =
-  //           product.bulk_discount_quantity !== 0 &&
-  //           quantity >= product.bulk_discount_quantity;
-
-  //         if (isDiscount) {
-  //           setDiscount(
-  //             (discount) => discount + product.bulk_discount_price * quantity,
-  //           );
-
-  //           return product.bulk_discount_price * quantity;
-  //         } else {
-  //           return product.price * quantity;
-  //         }
-  //       })
-  //       .reduce((price, nextPrice) => price + round2(nextPrice), 0)
-  //   : 0;
 
   const { summ, discount } = cartItems
     ? cartItems.reduce(
@@ -70,6 +49,10 @@ const CartSection = () => {
         { summ: 0, discount: 0 },
       )
     : { summ: 0, discount: 0 };
+
+  const deliveryPrice = 0;
+
+  const resultSumm = (summ ? summ : 0) + (deliveryPrice ? deliveryPrice : 0);
 
   return (
     <section className="cart-section cart" aria-labelledby={titleId}>
@@ -100,6 +83,35 @@ const CartSection = () => {
           discount={round2(discount)}
           quantity={quantity}
           summ={round2(summ)}
+          rows={[
+            {
+              name: "Товары:",
+              value: quantity,
+              show: true,
+            },
+            {
+              name: "Сумма:",
+              value: `${formatPrice(round2(summ))} ₽`,
+              show: true,
+            },
+            {
+              name: "Доставка:",
+              value: deliveryPrice ? `${deliveryPrice} ₽` : "Бесплатно",
+              show: true,
+            },
+            {
+              name: "Скидка:",
+              value: `-${formatPrice(round2(discount))} ₽`,
+              mode: "green",
+              show: discount !== 0,
+            },
+            {
+              name: "Общая сумма:",
+              value: `${formatPrice(round2(resultSumm))} ₽`,
+              mode: "bordered",
+              show: true,
+            },
+          ]}
         />
       </div>
     </section>

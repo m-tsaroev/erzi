@@ -16,27 +16,10 @@
     color: var(--color-light);
   }
 
-  &__groups {
+  &__rows {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-  }
-
-  &__group {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--color-light);
-
-    &:last-child {
-      padding: 17px 6px;
-      margin-right: -6px;
-      // margin-inline: -6px;
-      border: 1px solid var(--color-light);
-      border-radius: 20px;
-    }
   }
 
   &__button {
@@ -45,14 +28,14 @@
     background-color: var(--color-light);
     color: var(--color-dark);
     border-radius: 100px;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 16px;
     font-weight: 400;
   }
 
   &__extra {
     text-align: center;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 12px;
     line-height: 1.5;
     color: var(--color-light);

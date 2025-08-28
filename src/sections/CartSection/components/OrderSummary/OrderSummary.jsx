@@ -1,47 +1,24 @@
-import { formatPrice } from "@/utils/formatPrice";
+import classNames from "classnames";
+import { OrderSummaryRow } from "../OrderSummaryRow";
 import "./OrderSummary.scss";
 
 const OrderSummary = (props) => {
-  const { quantity, summ, deliveryPrice, discount } = props;
-
-  const resultSumm = summ ? summ : 0 + deliveryPrice ? deliveryPrice : 0;
+  const { rows } = props;
 
   return (
     <div className="order-summary">
       <h4 className="order-summary__title">Итого</h4>
-      <div className="order-summary__groups">
-        <div className="order-summary__group">
-          <span>Товары:</span>
-          {quantity && <span>{quantity}</span>}
-        </div>
-        <div className="order-summary__group">
-          <span>Сумма:</span>
-          {summ && <span>{formatPrice(summ)} ₽</span>}
-        </div>
-        <div className="order-summary__group">
-          <span>Доставка:</span>
-          {deliveryPrice ? (
-            <span>{formatPrice(deliveryPrice)}</span>
-          ) : (
-            <span>Бесплатно</span>
-          )}
-        </div>
-        {discount !== 0 && (
-          <div className="order-summary__group">
-            <span>Скидка:</span>
-            <span
-              style={{
-                color: "green",
-              }}
-            >
-              -{formatPrice(discount)} ₽
-            </span>
-          </div>
-        )}
-        <div className="order-summary__group">
-          <span>Общая сумма:</span>
-          {resultSumm && <span>{formatPrice(resultSumm)} ₽</span>}
-        </div>
+      <div className="order-summary__rows">
+        {rows.map(({ name, value, show, mode }) => {
+          return show ? (
+            <OrderSummaryRow
+              className={classNames("order-summary__row")}
+              name={name}
+              value={value}
+              mode={mode}
+            />
+          ) : null;
+        })}
       </div>
 
       <button className="order-summary__button">Заказать</button>
