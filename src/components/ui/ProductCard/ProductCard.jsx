@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import './ProductCard.scss'
 import { formatPrice } from '@/utils/formatPrice'
 import { ProductButton } from '../ProductButton'
+import { Link } from 'react-router-dom'
 
 const ProductCard = (props) => {
   const {
@@ -17,7 +18,7 @@ const ProductCard = (props) => {
 
   return (
     <li className={classNames('product-card__item', className)}>
-      <div className='product-card__item__body'>
+      <Link to={`/product/${id}`} className='product-card__item__body'>
         <div className='product-card__item-image'>
           <img src={image_url} alt='' width={232} height={188} />
         </div>
@@ -32,7 +33,7 @@ const ProductCard = (props) => {
           </div>
         </div>
         <ProductButton mode={modeButton} id={id} />
-      </div>
+      </Link>
     </li>
   )
 }

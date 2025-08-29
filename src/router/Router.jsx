@@ -3,6 +3,7 @@ import { MainLayout } from '@/layouts/MainLayout'
 import { ROUTES } from '@/config/routes'
 import { PATHS } from '@/config/paths'
 import { PrivateRoute } from './PrivateRoute'
+import { Product } from '@/pages/Product'
 
 const Router = () => {
   return (
@@ -25,6 +26,7 @@ const Router = () => {
               )
             })}
           </Route>
+          <Route path='/product/:id' element={<Product />} />
         </Route>
       </Routes>
     </BrowserRouter>
