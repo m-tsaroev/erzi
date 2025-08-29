@@ -1,7 +1,8 @@
 .modal-overlay {
-  @include abs-cover;
   @include flex-center;
 
+  position: fixed;
+  inset: 0;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
   z-index: 150;
