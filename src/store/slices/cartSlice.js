@@ -17,7 +17,7 @@ const addCard = createAsyncThunk(
       return await api(`/${credentials}/add_to_cart`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -35,7 +35,7 @@ const getCartItems = createAsyncThunk(
       const token = localStorage.getItem(storageTokenKey)
       return await api('/cart/items', {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -52,7 +52,7 @@ const deleteCartItem = createAsyncThunk(
       return await api(`/cart/items/${credentials}/delete`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -69,7 +69,7 @@ const incrementCartItem = createAsyncThunk(
       return await api(`/cart/items/${credentials}/increment`, {
         method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
     } catch (error) {
@@ -88,13 +88,48 @@ const decrementCartItem = createAsyncThunk(
       return await api(`/cart/items/${credentials}/decrement`, {
         method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
     } catch (error) {
       return rejectWithValue(
         error.message || 'Не удалось уменьшить количество товаров в корзине'
       )
+    }
+  }
+)
+
+const deleteAll = createAsyncThunk(
+  'cart/deleteAll',
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem(storageTokenKey)
+      return await api('/cart/delete_all', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (error) {
+      return rejectWithValue(
+        error.message || 'Не удалось уменьшить очистить корзину'
+      )
+    }
+  }
+)
+
+const restoreCartItems = createAsyncThunk(
+  'cart/restoreCartItems',
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem(storageTokenKey)
+      return await api('/cart/restore', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (error) {
+      return rejectWithValue(error.message)
     }
   }
 )
@@ -185,16 +220,35 @@ const cartSlice = createSlice({
         state.loading = false
         state.error = action.payload
 
-        console.log(action);
+        console.log(action)
+      })
+
+      // deleteAll
+
+      .addCase(deleteAll.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(deleteAll.fulfilled, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(deleteAll.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+
+        console.log(action)
       })
   },
 })
 
 export {
   addCard,
-  getCartItems,
-  deleteCartItem,
-  incrementCartItem,
   decrementCartItem,
+  deleteAll,
+  deleteCartItem,
+  getCartItems,
+  incrementCartItem,
+  restoreCartItems,
 }
 export default cartSlice.reducer

@@ -1,10 +1,15 @@
 :root {
+  --color-light-20op: #FFFFFF20;
+  --color-light-40op: #FFFFFF40;
   --color-light: #EBEBEB;
   --color-light-05: #F5F5F5;
   --color-light-10: #E4E4E4;
 
   --color-light-10op: #ffffff20;
   
+  --color-dark-20op: #00000020;
+  --color-dark-90op: rgba(0, 0, 0, 0.9);
+  --color-dark-50op: #00000050;
   --color-dark: #000000;
   --color-dark-05: #313131;
   --color-dark-10: #2D2D2D;
