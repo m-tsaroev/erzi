@@ -4,6 +4,7 @@ import { logout } from "@/store/slices/authSlice"
 import { useDispatch } from "react-redux"
 import { useNavigate } from 'react-router-dom'
 import { getCartItems } from '@/store/slices/cartSlice'
+import { ResetCartButton } from '@/components/ui/ResetCartButton'
 
 const Profile = () => {
   const dispatch = useDispatch()

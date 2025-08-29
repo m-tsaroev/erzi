@@ -23,4 +23,24 @@
     background-color: var(--color-dark);
     color: red;
   }
+
+  .progress-bar {
+    @include abs-center;
+
+    top: 2px;
+    width: 90%;
+    height: 2px;
+    background-color: var(--color-dark);
+    animation: progress-animation linear;
+
+    @keyframes progress-animation {
+      from {
+        width: 90%;
+      }
+
+      to {
+        width: 0;
+      }
+    }
+  }
 }

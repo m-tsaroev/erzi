@@ -1,12 +1,26 @@
 .cart {
   padding-top: 100px;
+  padding-bottom: 75px;
+  background: url('@/assets/images/cart/bg.jpg') 50% 0/cover no-repeat;
+  min-height: 80vh;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__title {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family-base);
     font-weight: 400;
-    font-size: 24px;
+    font-size: 64px;
     color: var(--color-dark);
+    mix-blend-mode: overlay;
+  }
 
+  &__items {
+    display: grid;
+    row-gap: 20px;
   }
 
   &__inner {

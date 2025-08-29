@@ -29,7 +29,7 @@ const registration = createAsyncThunk(
   'auth/registration',
   async (credentials, { rejectWithValue }) => {
     try {
-      return await api('/user/create', {
+      return await api('/user/register', {
         method: 'POST',
         body: credentials,
       })
